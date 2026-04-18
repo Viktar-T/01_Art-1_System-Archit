@@ -1,0 +1,11 @@
+ihrke-template/*.pdf
+ihrke-template/*.tex
+ihrke-template/*.aux
+ihrke-template/*.bbl
+ihrke-template/*.blg
+ihrke-template/*.log
+ihrke-template/*.bst
+ihrke-template/*.cls
+ihrke-template/journalnames.tex
+ihrke-template/article_files/
+ihrke-template/pics/*-converted-to.pdf

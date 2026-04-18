@@ -1,0 +1,112 @@
+---
+title: "[Title]"
+runningtitle: "[Short Title]"
+format:
+  mdpi-pdf:
+    keep-tex: true
+mdpi_journal: energies
+article_type: article
+article_status: submit
+
+author:
+  - name: Viktar Taustyka
+    corresponding: true
+    email: taustyka.viktar@gmail.com
+    role:
+      - Conceptualization
+      - Writing - original draft
+      - Methodology
+    affiliations:
+      - name: "West Pomeranian University of Technology in Szczecin"
+        department: "Department of Renewable Energy Engineering, Faculty of Environmental Management and Agriculture"
+        id: 1
+        city: "Szczecin"
+        country: "Poland"
+
+fundingstatement: |
+  [...]
+dataavailability: |
+  [...]
+conflictsofinterest: |
+  The author declares no conflict of interest.
+
+abstract: |
+  [...]
+
+keywords: [MING stack, CPS, learning factory, renewable energy, telemetry, edge-to-cloud, canonical data model, IIoT]
+bibliography: bibliography.bib
+---
+
+# Introduction {#sec-intro}
+
+[...] [@CameronTrivedi2013]
+
+# Related Work {#sec-related}
+
+## CPS Reference Architectures
+
+[...]
+
+## MING Stack Deployments
+
+[...]
+
+## Learning Factory Implementations
+
+[...]
+
+# System Architecture {#sec-architecture}
+
+## Overview
+
+[...]
+
+## Deployment Topology
+
+[...]
+
+# Canonical Data Model {#sec-cdm}
+
+## Design Rationale
+
+[...]
+
+## JSON Payload Schema
+
+[...]
+
+## Engine Bench Payload Example
+
+[...]
+
+## Algae Photobioreactor Payload Example
+
+[...]
+
+# Validation {#sec-validation}
+
+## Experimental Setup
+
+[...]
+
+## Results
+
+[...]
+
+# Discussion {#sec-discussion}
+
+## Scalability and Extension
+
+[...]
+
+## Limitations and Open Challenges
+
+[...]
+
+## Comparison to Related Approaches
+
+[...]
+
+# Conclusions {#sec-conclusions}
+
+[...]
