@@ -1,6 +1,6 @@
 ---
-title: "[Title]"
-runningtitle: "[Short Title]"
+title: "Architecting the Digital RES Learning Factory: A Scalable MING+React Telemetry Pipeline for Multi-Vector Energy Systems"
+runningtitle: "MING RES Learning Factory"
 format:
   mdpi-pdf:
     keep-tex: true
@@ -9,9 +9,9 @@ article_type: article
 article_status: submit
 
 author:
-  - name: Viktar Taustyka
+  - name: Kanchipogu Kelvyn G Melcheizedek
     corresponding: true
-    email: taustyka.viktar@gmail.com
+    email: kelvyn6612@gmail.com
     role:
       - Conceptualization
       - Writing - original draft
@@ -31,7 +31,7 @@ conflictsofinterest: |
   The author declares no conflict of interest.
 
 abstract: |
-  [...]
+  (write last)
 
 keywords: [MING stack, CPS, learning factory, renewable energy, telemetry, edge-to-cloud, canonical data model, IIoT]
 bibliography: bibliography.bib
@@ -39,74 +39,64 @@ bibliography: bibliography.bib
 
 # Introduction {#sec-intro}
 
-[...] [@CameronTrivedi2013]
+The problem (heterogeneous data in RES labs), the gap in existing telemetry solutions, and the specific contribution of this paper.
 
 # Related Work {#sec-related}
 
 ## CPS Reference Architectures
-
-[...]
+Overview of existing Cyber-Physical Systems architectures and their limitations in renewable energy contexts.
 
 ## MING Stack Deployments
-
-[...]
+Analysis of prior implementations using the MING stack (Mosquitto, InfluxDB, Node-RED, Grafana) in industrial IoT.
 
 ## Learning Factory Implementations
-
-[...]
+Review of current Learning Factory models and their data integration challenges.
 
 # System Architecture {#sec-architecture}
 
 ## Overview
-
-[...]
+Your proposed MING+React pipeline design, serving as the core technical contribution of this work.
 
 ## Deployment Topology
-
-[...]
+Detailed mapping of components from edge sensors to cloud-based visualization.
 
 # Canonical Data Model {#sec-cdm}
 
 ## Design Rationale
-
-[...]
+How you normalize Engine Bench (fast electrical) vs. Algae Photobioreactor (slow biological) data into a unified format.
 
 ## JSON Payload Schema
-
-[...]
+The specific structure of the data packets used throughout the pipeline.
 
 ## Engine Bench Payload Example
-
-[...]
+A concrete example of high-frequency data represented in the canonical model.
 
 ## Algae Photobioreactor Payload Example
-
-[...]
+A concrete example of slow-moving biological metrics represented in the canonical model.
 
 # Validation {#sec-validation}
 
 ## Experimental Setup
-
-[...]
+Description of the simulated JSON payload comparison and the pre-validation logic implemented.
 
 ## Results
-
-[...]
+Findings from the telemetry pipeline performance and data integrity checks.
 
 # Discussion {#sec-discussion}
 
 ## Scalability and Extension
-
-[...]
+How the architecture handles additional data vectors and increased sensor density.
 
 ## Limitations and Open Challenges
-
-[...]
+Edge cases, potential latency issues, and areas requiring further optimization.
 
 ## Comparison to Related Approaches
-
-[...]
+How this MING+React approach differs from and improves upon traditional SCADA or proprietary systems.
 
 # Conclusions {#sec-conclusions}
 
-[...]
+Summary of achievements, current limitations of the study, and proposed future work.
+
+# Scratch {#sec-scratch}
+
+<!-- DUMP IDEAS, QUOTES, AND UNFINISHED ARGUMENTS HERE TO BE REFINED LATER -->
