@@ -4,6 +4,7 @@ runningtitle: "MING RES Learning Factory"
 format:
   mdpi-pdf:
     keep-tex: true
+    number-sections: true
 mdpi_journal: energies
 article_type: article
 article_status: submit
@@ -39,7 +40,7 @@ bibliography: bibliography.bib
 
 # Introduction {#sec-intro}
 
-The problem (heterogeneous data in RES labs), the gap in existing telemetry solutions, and the specific contribution of this paper.
+The problem (heterogeneous data in RES labs), the gap in existing telemetry solutions, and the specific contribution of this paper [@CameronTrivedi2013].
 
 # Related Work {#sec-related}
 
@@ -54,11 +55,36 @@ Review of current Learning Factory models and their data integration challenges.
 
 # System Architecture {#sec-architecture}
 
-## Overview
-Your proposed MING+React pipeline design, serving as the core technical contribution of this work.
+## Overview {#sec-overview}
 
-## Deployment Topology
-Detailed mapping of components from edge sensors to cloud-based visualization.
+In this section, we provide a structural and functional breakdown of our MING+React telemetry pipeline, which is the core technical contribution. Our design philosophy revolves around the implementation of a unified digital infrastructure that is orchestrated entirely through Docker Compose. This helped us in ensuring every component is containerized in a portable and reproducible ecosystem that bridges the cyber and physical domains of the Learning Factory. Our approach made sure the pedagogical experiments in the Learning Factory remain independent of hardware variations.
+
+We mapped our project services onto the Canonical 4-Layer CPS Architecture to maintain technical rigor. The mapping categorizes our stack as following:
+
+*   **Perception Layer**: This tier comprises the physical and virtual sensor nodes, such as PV panels, wind turbines, and engine test benches, that generate raw telemetry. In our current implementation, this layer operated through node-red/flows simulations to generate raw JSON telemetry from virtual energy assets.
+*   **Network Layer**: Here, we utilize the `iot-mosquitto` container to manage the asynchronous messaging via MQTT Protocol, which is used to handle high-frequency data traffic with minimal overhead.
+*   **Middleware Layer**: This layer is the logic heavy core of our architecture. It leverages `node-red` for flow orchestration and `influxdb` for high-frequency time-series persistence. This layer acts as the "Universal Translator" as disparate data heartbeats are normalized here.
+*   **Application Layer**: This tier provides the interface for human-machine interaction with the help of a custom React frontend and Grafana dashboards. We implemented the frontend using Vite to ensure high-performance rendering of real time status cards.
+
+![Structural mapping of the MING+React stack onto the 4-Layer CPS Model. The diagram illustrates our implementation of Docker-orchestrated containers (Mosquitto, Node-RED, InfluxDB, React) and how they occupy specific roles in the Perception-to-Application pipeline.](pics/placeholder.png){#fig-layers}
+
+## Deployment Topology {#sec-topology}
+
+We designed the deployment topology as a "Nervous System" for the handling of Impedance Mismatch between high-velocity mechanical vectors and low-velocity biological vectors. We used the OODA loop framework to describe the functional flow of our pipeline. We intended this topology specifically to synchronize 12 distinct data vectors. These vectors represent the intersection of mechanical speed and biological inertia.
+
+### Observe: Edge Ingestion {#sec-observe}
+This Observe phase initiates at the perception layer where device nodes publish raw telemetry data to specific MQTT topics. This stage captures the raw "pulse" of the Learning factory, which ranges from high-speed electrical yields to gradual biological growth.
+
+### Orient: Protocol Normalization {#sec-orient}
+This phase is handled exclusively within our Node-RED middleware. Here, we resolved the challenge of 12 disparate heartbeats. For the 6 Fast Mechanical-Electrical Vectors such as Rotational Velocity and System Current, we capture mechanical dynamics in real time. While for the 6 Slow Biological-Thermal-Chemical Vectors such as pH Value, Dissolved Oxygen, we mapped the measurements to our Canonical Data Model (CDM). This normalization creates a "Universal Translator" effect, which ensures regardless of source frequency, every data point adopts a unified, synchronized JSON format.
+
+### Decide: Null-Pruning and Logic {#sec-decide}
+The Decide phase is where our system's internal validation logic resides. We implemented a custom CDM null-deletion logic within the Node-RED. This is crucial, as this correctly prunes empty values or placeholders across the entire simulation corpus before indexing. This protects the InfluxDB storage from noise inherent in multi-vector systems. By separating tags from fields, the middleware guarantees that the schema remains consistent across all 12 measurements, changing the data flow from a raw stream into a high-integrity, homogenized dataset.
+
+### Act: Visualization and UI Rendering {#sec-act}
+This Act phase finishes the loop at the application layer. In our React source code, we implemented real time status cards that update as soon as the API receives new packets. Grafana acts on the historical data in InfluxDB to provide trend analysis and we orchestrated its panels to trigger alerts based on threshold violations. Our human-centric design allows researchers to close the loop, enabling them to interact with a synchronized digital twin of the energy twin.
+
+![Functional topology of the telemetry pipeline. The figure traces the OODA Loop, demonstrating how the Orient and Decide phases in Node-RED normalize 12 data vectors (6 Fast, 6 Slow) into a homogenized stream for React/Grafana visualization.](pics/placeholder.png){#fig-ooda}
 
 # Canonical Data Model {#sec-cdm}
 
