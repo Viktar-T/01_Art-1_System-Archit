@@ -88,17 +88,59 @@ This Act phase finishes the loop at the application layer. In our React source c
 
 # Canonical Data Model {#sec-cdm}
 
-## Design Rationale
-How you normalize Engine Bench (fast electrical) vs. Algae Photobioreactor (slow biological) data into a unified format.
+## Design Rationale {#sec-cdm-rationale}
 
-## JSON Payload Schema
-The specific structure of the data packets used throughout the pipeline.
+In this section, we detail the transformation of raw, heterogeneous telemetry into a unified JSON object. Our Canonical Data Model (CDM) serves as a structural buffer to solve the acute "Impedance Mismatch" inherent in multi-vector energy systems where the high-frequency dynamics of an engine bench clash with the metabolic rhythms of a photobioreactor. The Engine Bench generates 6 high-frequency vectors (RPM, Torque, Active Power, Voltage, Current, Frequency) where critical events occur in milliseconds, while the Algae Photobioreactor produces 6 slow biological vectors (pH, Dissolved Oxygen, Optical Density, Gas Pressure, Methane Concentration, Medium Temperature) that may only shift over hours. We implemented this CDM to normalize these disparate heartbeats. It acts as a "Universal Translator". By mapping every sensor to a specific key-value contract, we eliminated the need for custom ingestion logic for every new device, and thus, synchronized the streams. This ensures the React UI receives a predictable, clean data structure regardless of the sensor's physical origin.
 
-## Engine Bench Payload Example
-A concrete example of high-frequency data represented in the canonical model.
+## JSON Payload Schema {#sec-cdm-schema}
 
-## Algae Photobioreactor Payload Example
-A concrete example of slow-moving biological metrics represented in the canonical model.
+We established the CDM as a "Strict Contract" between the perception and middleware layers. Orchestrated by the `v3.0-cdm-ingestion-gateway.json` flow in Node-RED, this phase performs a structural audit on every MQTT packet—if validation fails, the data is dropped to protect time-series integrity. The schema is anchored by mandatory root keys: `device_id`, `device_type`, `timestamp`, and a `data` object—enabling the API and React frontend to query any asset using a unified, simplified logic.
+
+The core of our architectural novelty resides in the homogenization of disparate energy vectors through Null-Pruning and Metadata Separation logic. We implemented a dynamic filtering loop using an `Object.entries` process to prune any key containing a null value. This is critical because, if a sensor fails, the middleware deletes the null key before it reaches InfluxDB, preventing "Bad Data" from polluting the database or degrading query performance. Simultaneously, we transformed root-level keys into InfluxDB Tags (e.g., `site_id`) while maintaining measurements as Fields. By enforcing this structural unity, we bridged the gap between high-velocity mechanical pulses and slow-moving biological drifts, allowing generic UI components to render any device’s state by simply mapping keys within the data payload.
+
+## Engine Bench Payload Example {#sec-cdm-engine}
+
+The Engine Bench represents our most demanding "Fast" vector. We mapped its 6 mechanical-electrical parameters into a sub-second telemetry packet to ensure power calculations remain accurate even during rapid transients.
+
+```json
+{
+  "device_id": "engine_bench_1",
+  "device_type": "engine_test_bench",
+  "timestamp": "2026-05-09T16:12:49.001Z",
+  "tags": { "location": "site_e", "fuel_type": "bio-ethanol" },
+  "data": {
+    "engine_speed_rpm": 3450.2,
+    "torque_nm": 42.15,
+    "active_power_kw": 15.2,
+    "grid_voltage_v": 230.1,
+    "grid_current_a": 6.8,
+    "grid_frequency_hz": 50.01
+  }
+}
+```
+
+## Algae Photobioreactor Payload Example {#sec-cdm-algae}
+
+In contrast, the Algae Photobioreactor demonstrates the CDM’s flexibility for "Slow" vectors. We mapped its 6 biological-chemical parameters into the identical structural framework used for the engine bench.
+
+```json
+{
+  "device_id": "inside_farm_r121",
+  "device_type": "algae_farm",
+  "timestamp": "2026-05-09T16:12:49.500Z",
+  "tags": { "location": "site_f", "strain": "chlorella" },
+  "data": {
+    "ph_value": 7.15,
+    "dissolved_oxygen_do_mg_l": 8.45,
+    "optical_density_od_560nm": 0.92,
+    "gas_pressure_kpa": 105.2,
+    "methane_ch4_percent": 0.05,
+    "medium_temperature_c": 26.5
+  }
+}
+```
+
+By extracting the data object keys, we proved that the CDM successfully hid the underlying complexity of the multi-vector energy system. We synchronized the Learning Factory.
 
 # Validation {#sec-validation}
 
