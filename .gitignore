@@ -13,3 +13,13 @@ ihrke-template/pics/*-converted-to.pdf
 
 # Viktar's notes:
 docs/Plan-for-art-writing
+
+# --- Claude AI agents workflow ---
+# Commit agent definitions (CLAUDE.md, .claude/agents/**, .claude/commands/**, .claude/skills/**)
+# Ignore session-local artefacts that some Claude tooling drops into .claude/
+.claude/cache/
+.claude/sessions/
+.claude/local/
+.claude/*.log
+.claude/*.tmp
+
