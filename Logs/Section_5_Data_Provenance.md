@@ -6,7 +6,6 @@ This document certifies the origin and measurement methodology for the empirical
 *   **Source**: InfluxDB Bucket `renewable_energy`.
 *   **Extraction Method**: PowerShell script `capture_realtime.ps1` utilizing the InfluxDB REST API.
 *   **Parameters**: 100 synchronized samples of `engine_speed_rpm` (Fast Vector) and `ph_value` (Slow Vector).
-*   **Timestamp**: Captured on 2026-05-11 during a 10-minute sustained simulation run.
 
 ## 2. Table 1: Performance Metrics
 The values in Table 1 were derived from the execution of `tests/test-performance.ps1` under peak simulation load.
