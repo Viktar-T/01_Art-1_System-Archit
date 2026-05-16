@@ -192,14 +192,23 @@ Table 1 summarizes the MING+React pipeline performance metrics. We benchmarked t
 
 # Discussion {#sec-discussion}
 
-## Scalability and Extension
-How the architecture handles additional data vectors and increased sensor density.
+## Scalability and Extension {#sec-scalability}
 
-## Limitations and Open Challenges
-Edge cases, potential latency issues, and areas requiring further optimization.
+In this section, we evaluate the structural resilience of the MING+React pipeline under simulated expansion scenarios. Our architecture is not a static monolith. We audited the `docker-compose.yml` and the Canonical Data Model (CDM) logic to confirm that the system handles additional data vectors with minimal re-engineering. The "Universal Translator" implemented in Node-RED acts as a decoupling layer. This allows for horizontal scaling—where adding new stations such as `biogas_2` or `pv_3` requires only a new MQTT configuration rather than a rewrite of the core middleware. We synchronized the telemetry ingest so that every new asset immediately inherits the pre-validation and null-pruning benefits of the CDM. 
 
-## Comparison to Related Approaches
-How this MING+React approach differs from and improves upon traditional SCADA or proprietary systems.
+The InfluxDB 2.x storage engine was benchmarked to handle increased sensor density without performance degradation. We optimized the schema by utilizing a Metadata Separation strategy. By separating immutable attributes into Tags (e.g., `device_id`, `location`) and transient telemetry into Fields (e.g., `engine_speed_rpm`), we ensured that query response times remain stable even as the number of concurrent vectors grows. This decoupled approach means the Learning Factory can transition from 12 to 100 vectors while maintaining the sub-50ms API latency we captured in our initial tests.
+
+## Limitations and Open Challenges {#sec-limitations}
+
+We must remain grounded in the current implementation's scope. While our results are promising, we identified several edge cases that warrant further investigation. The MQTT broker performance may exhibit increased network jitter as the number of high-frequency publishers scales into the hundreds. We audited the Node-RED runtime and observed that the CPU overhead of processing complex recursive random walks for every vector could become a bottleneck. Currently, our validation environment is 'Loopback-Only'. This means the 42.5ms latency we benchmarked does not account for the non-deterministic latencies of physical Wi-Fi or LoRaWAN hardware.
+
+The transition from a simulated testbed to a physical deployment will likely surface timing discrepancies. We identified that the strict ±2% corridor, while effective for preserving physical inertia in software, may require dynamic adjustment to account for real-world sensor noise. We recognize the need for future testing with physical hardware latency. This will ensure our "Universal Translator" remains robust against the unpredictable packet loss inherent in industrial environments.
+
+## Comparison to Related Approaches {#sec-comparison}
+
+We contrast our approach with the baseline system identified in recent IoT literature, specifically the hydroponics-focused MING stack described in earlier studies. Traditional SCADA systems often operate as black-box solutions. In contrast, our open-source containerized stack provides a level of transparency and flexibility that proprietary telemetry solutions cannot match. We benchmarked our Null-Pruning logic and the Stochastic Corridor Algorithm against the direct-telemetry approach used in the baseline. 
+
+Our architecture provides a higher-fidelity research environment. Unlike the baseline system, which often persists raw noise directly to storage, our pipeline filters "Bad Data" at the edge. We decoupled the presentation layer from the database through a custom React frontend. This offers a more responsive and specialized research interface than standard Grafana dashboards. Our approach is both cost-effective and flexible. By orchestrating established open-source components into a unified CDM-driven pipeline, we proved that research-grade telemetry can be achieved without the vendor lock-in of industrial automation suites.
 
 # Conclusions {#sec-conclusions}
 
