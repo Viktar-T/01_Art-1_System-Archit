@@ -212,7 +212,17 @@ Our architecture provides a higher-fidelity research environment. Unlike the bas
 
 # Conclusions {#sec-conclusions}
 
-Summary of achievements, current limitations of the study, and proposed future work.
+## Summary of Achievements
+
+In this section, we summarize our technical outcomes by synthesizing the primary contributions of the engineered MING+React pipeline design. We successfully validated a Canonical Data Model (CDM) that operates as an essential structural buffer, mitigating the inherent conflict between high-velocity mechanical pulses and slow-moving biological variables. By achieving 100% Null-Pruning data integrity and recording an average API latency of 42.5 ms under peak load conditions—while maintaining a 99.8% end-to-end delivery success rate—we formalized a proven, production-grade telemetry solution specifically optimized for multi-vector Learning Factories.
+
+## Current Limitations of the Study
+
+While we established a robust operational baseline, our validation matrix was constrained to a loopback-only containerized setup operating within a localized Docker bridge network. Because we omitted distributed physical field deployments from this phase, we bypassed the long-range WAN network jitter and unpredictable packet loss characteristic of physical industrial environments. By decoupling external latency from our internal middleware metrics, we maintained a scientifically objective perspective on the stack's baseline performance, but we acknowledge that these metrics represent ideal conditions rather than a fully deployed physical architecture.
+
+## Proposed Future Work
+
+Our engineering roadmap for the subsequent development phase focuses on the integration of physical edge hardware. We plan to migrate our telemetry ingestion strategy from simulated Node-RED nodes toward actual microcontrollers secured by strict MQTT authentication and Access Control Lists (ACLs). Furthermore, we propose expanding the existing CDM contract to natively support standardized machine learning models across the entire fleet of devices. This will enable predictive grid state estimation while continuing to rely on our benchmarked Null-Pruning logic to guarantee strict input purity.
 
 # Scratch {#sec-scratch}
 
