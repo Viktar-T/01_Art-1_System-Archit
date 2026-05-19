@@ -45,16 +45,25 @@ bibliography: bibliography.bib
 
 The problem (heterogeneous data in RES labs), the gap in existing telemetry solutions, and the specific contribution of this paper [@CameronTrivedi2013].
 
-# Related Work {#sec-related}
+# Related Work {#sec-related-work}
 
-## CPS Reference Architectures
-Overview of existing Cyber-Physical Systems architectures and their limitations in renewable energy contexts.
+## CPS Reference Architectures {#sec-cps-architectures}
 
-## MING Stack Deployments
-Analysis of prior implementations using the MING stack (Mosquitto, InfluxDB, Node-RED, Grafana) in industrial IoT.
+In this section, we evaluate the architectural boundaries of established Cyber-Physical Systems (CPS) and critique their deployment within renewable energy laboratory contexts. Conventional reference architectures often struggle when bridging raw physical assets with cloud-based analytics, primarily due to systemic limitations in handling cross-vector environments. Legacy frameworks mandate rigid structural coupling, which institutionalizes profound data inefficiencies and fails to meet modern edge-computing constraints [@hensler2023onpremises].
 
-## Learning Factory Implementations
-Review of current Learning Factory models and their data integration challenges.
+Furthermore, foundational Industry 4.0 reference models inherently restrict the seamless integration of high-frequency mechanical pulses with slow-moving biological variables. Our analysis of current digital-twin architectures reveals that this rigid structural coupling institutionalizes isolated data silos. Consequently, advanced hybrid microgrid optimization is severely restricted, forcing researchers to rely on highly brittle ingestion routines [@jiang2018improved; @balogh2023digitaltwins].
+
+## MING Stack Deployments {#sec-ming-stack}
+
+We contrast our approach with previous implementations that utilize the Mosquitto, InfluxDB, Node-RED, and Grafana (MING) stack to identify critical operational gaps. While standard MING deployments excel at basic time-series ingestion for uniform data, they lack standardized validation middleware. Existing literature frequently omits real-time preprocessing at the network edge, relying heavily on post-ingestion processing rather than pre-ingestion validation [@kychkin2019architecture]. This design flaw leaves the destination database highly vulnerable, as hardware sensor degradation can immediately inject malformed telemetry into the persistent storage tier. 
+
+To prevent this compounding error and protect historical data integrity, our methodology decouples input validation from storage. Unlike earlier MING frameworks that lack structural oversight, we engineered a robust automated null-pruning intervention to ensure that only validated, cleansed data reaches the time-series database [@gutierrez2023toward].
+
+## Learning Factory Implementations {#sec-learning-factory}
+
+A review of current Digital Learning Factory topologies exposes major data integration challenges. Traditional education-focused grids treat multi-energy telemetry as isolated silos, where fast mechanical-electrical vectors remain strictly segregated from slow biochemical vectors. These isolated physical testbeds cannot effectively communicate, severely limiting cross-domain pedagogical analysis [@saad2020iot]. 
+
+We actively dismantle this rigid, institutionalized design by formalizing an explicitly open-source, vendor-neutral alternative. By mapping localized sensor telemetry into category-specific Canonical Data Models (CDMs), we decouple the physical sensor layer from the logical processing tier. This fully decoupled integration philosophy successfully mitigates the historical impedance mismatch between rapid electrical transients and gradual metabolic shifts, enabling a comprehensive, cross-vector research environment [@bies2023conversion].
 
 # System Architecture {#sec-architecture}
 
