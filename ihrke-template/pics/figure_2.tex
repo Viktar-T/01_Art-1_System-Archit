@@ -15,17 +15,17 @@
     \node[note, right=0.4cm of S1] (N1) {Fast electrical vectors (3--5 s)\\Slow biological vectors (pH, Temp)};
 
     % Orient
-    \node[phase, below=1.2cm of S1] (P2) {ORIENT\\(Protocol Normalization)};
+    \node[phase, below=0.5cm of S1] (P2) {ORIENT\\(Protocol Normalization)};
     \node[stepbox, below=0.4cm of P2] (S2) {Node-RED Middleware Maps Raw\\Payloads to Canonical Data Model (CDM)};
     \node[note, right=0.4cm of S2] (N2) {Normalizes data formats\\Bridges impedance mismatches};
 
     % Decide
-    \node[phase, below=1.2cm of S2] (P3) {DECIDE\\(Validation \& Pruning)};
+    \node[phase, below=0.5cm of S2] (P3) {DECIDE\\(Validation \& Pruning)};
     \node[stepbox, below=0.4cm of P3] (S3) {Null-Pruning Script Strips Empty Fields\\before writing InfluxDB Line Protocol};
     \node[note, right=0.4cm of S3] (N3) {Reduces TSDB storage volume\\Keeps uniform query schema};
 
     % Act
-    \node[phase, below=1.2cm of S3] (P4) {ACT\\(Visualization \& Alerting)};
+    \node[phase, below=0.5cm of S3] (P4) {ACT\\(Visualization \& Alerting)};
     \node[stepbox, below=0.4cm of P4] (S4) {React UI Status Cards Update\\Grafana Renders Historical Dashboards};
     \node[note, right=0.4cm of S4] (N4) {Synchronized Digital Twin state\\Threshold alerts triggered};
 
