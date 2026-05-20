@@ -84,7 +84,7 @@ The project services were mapped onto the Canonical 4-Layer CPS Architecture to 
 
 The structural mapping of these containerized services across the four layers is illustrated in @fig-layers.
 
-![Structural mapping of the MING+React stack onto the 4-Layer CPS Model, illustrating the containerized implementation (Mosquitto, Node-RED, InfluxDB, React) across layers. The mapping demonstrates how decoupling ingestion logic from the application interface enables a scalable, vendor-agnostic architecture.](pics/placeholder.png){#fig-layers}
+![Structural mapping of the MING+React stack onto the 4-Layer CPS Model, illustrating the containerized implementation (Mosquitto, Node-RED, InfluxDB, React) across layers. The mapping demonstrates how decoupling ingestion logic from the application interface enables a scalable, vendor-agnostic architecture.](pics/Figure_1_Layers.pdf){#fig-layers}
 
 ## Deployment Topology {#sec-topology}
 
@@ -102,7 +102,7 @@ The Decide phase is where the system's internal validation logic resides. A cust
 ### Act: Visualization and UI Rendering {#sec-act}
 The Act phase finishes the loop at the application layer. In the React source code, real-time status cards are implemented to update as soon as the API receives new packets. Grafana acts on the historical data in InfluxDB to provide trend analysis and its panels were orchestrated to trigger alerts based on threshold violations. The human-centric design allows researchers to close the loop, enabling them to interact with a synchronized digital twin of the energy assets.
 
-![Functional topology of the telemetry pipeline tracing the OODA Loop, demonstrating how the Orient and Decide phases in Node-RED normalize 12 data vectors (6 Fast, 6 Slow) into a homogenized stream. This confirms that edge-level normalization successfully bridges the impedance mismatch between fast mechanical and slow biological domains.](pics/placeholder.png){#fig-ooda}
+![Functional topology of the telemetry pipeline tracing the OODA Loop, demonstrating how the Orient and Decide phases in Node-RED normalize 12 data vectors (6 Fast, 6 Slow) into a homogenized stream. This confirms that edge-level normalization successfully bridges the impedance mismatch between fast mechanical and slow biological domains.](pics/Figure_2_OODA.pdf){#fig-ooda}
 
 ## MQTT Topic Taxonomy and Security Model {#sec-security}
 
