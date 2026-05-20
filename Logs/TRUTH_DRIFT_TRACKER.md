@@ -1,31 +1,31 @@
 # Traceability and Truth-Drift Tracker
 
-This file tracks the alignment and discrepancies between the **Manuscript Draft**, the **Technical Specification** (Single Source of Truth), and the **Actual Source Code** (Implementation). 
-
-**Usage**: Update this file whenever a new section is drafted or a technical claim is made. Use this to ensure the article remains grounded in reality even if the spec is outdated.
+This file tracks the active discrepancies and technical drifts between the **Manuscript Draft** (`article.qmd`), the **Technical Specification** (`IoT_Data_Arch-JSON-MQTT.md`), and the **Actual Source Code** (`plat-edu-bad-data-mvp/`).
 
 ---
 
 ## 1. Active Discrepancy Matrix
 
-| Feature / Element | Manuscript Draft (`article.qmd`) | Technical Spec (`docs/pl-Edu-Bad/`) | Source Code (`plat-edu-bad-mvp/`) | Alignment Status |
+| Feature / Element | Manuscript Draft (`article.qmd`) | Technical Spec (`IoT_Data_Arch-JSON-MQTT.md`) | Source Code (`plat-edu-bad-data-mvp/`) | Drift Status & Description |
 | :--- | :--- | :--- | :--- | :--- |
-| **Engine ID** | `engine_bench_1` | `Engine_bench-R121` | `engine_bench_1` | ✅ **Grounded in Code.** Spec is outdated. |
-| **Algae ID** | `inside_farm_r121` | `Algae-inside-farm-R121` | `inside_farm_r121` | ✅ **Grounded in Code.** Spec uses Pascal-Kebab. |
-| **Measurement** | `algae_farm` | `algae-farm-1` | `algae_farm` | ✅ **Grounded in Code.** Spec enforces numbering. |
-| **Simulation Logic** | `Strict Corridor (±2%)` | **ABSENT** | `Math.abs(prevVal) * 0.02` | ⚠️ **Grounding Gap.** Algorithm exists in Code but not in Spec. |
+| **Engine ID** | `engine_bench_1` | `Engine_bench-R121` | `engine_bench_1` (topic / station_id) | **Active Spec Drift.** The manuscript and codebase utilize `engine_bench_1` for consistency. The specification contains the outdated `Engine_bench-R121`. |
+| **Algae ID** | `inside_farm_r121` | `Algae-inside-farm-R121` | `inside_farm_r121` (topic / station_id) | **Active Spec Drift.** The manuscript and codebase use lowercase Snake-Case `inside_farm_r121`. The spec uses Pascal-Kebab formatting. |
+| **Measurement** | `algae_farm` (payload `device_type`) | `algae-farm-1` | `algae_telemetry` (InfluxDB) | **Active Ingestion Drift.** The payload identifies the device as `algae_farm`, but the ingestion gateway writes data to `algae_telemetry`. |
+| **Simulation Logic** | `Strict Corridor (±2%)` | **ABSENT** | `Math.abs(prevVal) * 0.02` | **Active Grounding Gap.** The manuscript and code implement a stochastic recursive random walk. This algorithm is completely missing in the specification. |
+| **Engine Category** | `engine_bench` | `engine` | `engine_bench` (topic) / `engine_bench_telemetry` | **Active Spec Drift.** The spec outlines the category level as `engine`, whereas code and manuscript use `engine_bench`. |
 
 ---
 
-## 2. Implementation Details (Extracted from Code)
+## 2. Technical Ground Truth Details (Extracted from Code)
 
 ### Stochastic Corridor Algorithm
-- **Definition**: Each data point is constrained to a window relative to its predecessor.
 - **Formula**: `newVal = prevVal + ((Math.random() - 0.5) * 2 * (prevVal * 0.02))`
-- **Enforcement**: Applied globally across all simulation flows (Engine, Algae, Wind, PV) in the Node-RED middleware.
+- **Enforcement**: Applied in the Node-RED middleware flows to simulate physical inertia across all 12 energy vectors.
 
-### Metadata Tags (Confirmed from InfluxDB Ingestion)
-- `device_id`: Hardcoded per flow.
-- `device_type`: Matches Category name.
-- `location`: e.g., `site_e`, `site_f`.
-- `status`: e.g., `operational`, `Generating`.
+### Ingested Database Tags (InfluxDB 2.x)
+- `station_id`: Parsed dynamically from the 4th element of the topic path (e.g., `inside_farm_r121`, `engine_bench_1`).
+- `category`: Parsed dynamically from the 3rd element of the topic path (e.g., `algae`, `engine_bench`).
+- `site_id`: Hardcoded to `"wksir_kioze"`.
+- `device_model`: Extracted from payload (`incoming.device_type` or `incoming.device_model`).
+- `connection_type`: Extracted from payload (`mqtt_telemetry`).
+- *Omission Note*: The payload key `device_id` is parsed but dropped by the ingestion flow and not saved as an InfluxDB tag.
