@@ -139,7 +139,7 @@ In this section, the transformation of raw, heterogeneous telemetry into a unifi
 | | Methane Concentration | `methane_ch4_percent` | % | $5000\text{ ms}$ |
 | | Medium Temperature | `medium_temperature_c` | °C | $5000\text{ ms}$ |
 
-: Listing of the 12 energy vectors mapped to the CDM, showing speed classification and physical parameters. {#tbl-vectors}
+: Listing of the 12 energy vectors mapped to the CDM, showing speed classification and physical parameters. {#tbl-vectors tbl-colwidths="[18,17,35,10,20]"}
 
 ## JSON Payload Schema {#sec-cdm-schema}
 
