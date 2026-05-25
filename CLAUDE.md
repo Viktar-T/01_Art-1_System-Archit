@@ -29,6 +29,7 @@ Senior author: Viktar Taustyha. Co-author: Kanchipogu Kelvyn G Melcheizedek.
 │   └── agents/                            ← subagent definitions
 │       ├── section-drafter.md
 │       ├── reviewer-r2.md
+│       ├── reviewer-mdpi-full.md
 │       └── bib-auditor.md
 ├── 00_HOW-TO-WRITE-THIS-ARTICLE.md        ← human-facing workflow guide
 ├── 01_Article-1_System-Architer-notes.md  ← research compass
@@ -102,6 +103,7 @@ Steps 1, 2, 4 are predominantly human. Steps 3, 5, 6 may be AI-executed under hu
 Run from `ihrke-template/`:
 
 ```bash
+cd ihrke-template
 # Render the manuscript to PDF (the build gate)
 quarto render article.qmd
 
@@ -170,7 +172,8 @@ Defined under `.claude/agents/`. Each is a focused worker with a constrained pro
 | Agent                          | When to invoke                                                                                       |
 | :----------------------------- | :--------------------------------------------------------------------------------------------------- |
 | `section-drafter`              | First-pass draft of a specific section, source-bound, gap-marking. Implements prompt template **T1**. |
-| `reviewer-r2`                  | Independent MDPI reviewer-2 critique of a finished section. Implements prompt template **T2**.        |
+| `reviewer-r2`                  | Independent MDPI reviewer-2 critique of a **finished section**. Implements prompt template **T2**.   |
+| `reviewer-mdpi-full`           | Full-manuscript peer review against MDPI Energies A1 criteria, H3 spec audit, and P2 bib check.      |
 | `bib-auditor`                  | Audit `bibliography.bib` for missing fields, duplicates, and orphan citations.                       |
 
 The drafter and the reviewer must run in **separate sessions** (P-doc §2). A single session that both drafts and reviews its own draft will rubber-stamp itself.
