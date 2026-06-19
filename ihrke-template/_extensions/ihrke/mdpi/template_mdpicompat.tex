@@ -318,6 +318,7 @@ $endif$
 $if(pagestyle)$
 \pagestyle{$pagestyle$}
 $endif$
+\renewcommand{\bibliographystyle}[1]{}
 $pandoc.tex()$
 $if(lang)$
 \ifLuaTeX
