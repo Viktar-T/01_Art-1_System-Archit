@@ -1,0 +1,25 @@
+ACM CCS 2012 codes — paste into the MDPI portal "Classifications" block
+========================================================================
+
+Row label in the form : CCS (ACM Computing Classification System)
+Code field — paste one of the two equivalents below:
+
+----- Option A : description paths (preferred) -----
+Computer systems organization~Embedded and cyber-physical systems; Computer systems organization~Cloud computing; Information systems~Database design and models
+
+----- Option B : numeric IDs (fallback) -----
+10010520.10010553; 10010520.10010521.10010537.10003100; 10002951.10002952.10002953
+
+Three concepts, all significance 500 (primary topic):
+
+ 1. Computer systems organization > Embedded and cyber-physical systems
+    ID 10010520.10010553
+ 2. Computer systems organization > Cloud computing
+    ID 10010520.10010521.10010537.10003100
+ 3. Information systems > Database design and models
+    ID 10002951.10002952.10002953
+
+Other rows on the form (MSC, PACS, AGRICOLASCC, JEL, MESH) — LEAVE BLANK.
+
+Generated 2026-05-28 from https://dl.acm.org/ccs
+Full record with LaTeX block: ../../02_pre-submission/acm-ccs-codes.md

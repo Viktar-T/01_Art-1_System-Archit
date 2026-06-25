@@ -1,0 +1,1291 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+    energies,
+    article,
+    submit,
+moreauthors
+]{mdpi}
+
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else  
+    % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\setcounter{secnumdepth}{5}
+% Make \paragraph and \subparagraph free-standing
+\makeatletter
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}{
+    \@ifstar
+      \xxxParagraphStar
+      \xxxParagraphNoStar
+  }
+  \newcommand{\xxxParagraphStar}[1]{\oldparagraph*{#1}\mbox{}}
+  \newcommand{\xxxParagraphNoStar}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}{
+    \@ifstar
+      \xxxSubParagraphStar
+      \xxxSubParagraphNoStar
+  }
+  \newcommand{\xxxSubParagraphStar}[1]{\oldsubparagraph*{#1}\mbox{}}
+  \newcommand{\xxxSubParagraphNoStar}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+\makeatother
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{241,243,245}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.40,0.45,0.13}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\ExtensionTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.28,0.35,0.67}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.46,0.62}{#1}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.07,0.07,0.07}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+
+
+
+
+
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+
+
+ 
+\usepackage[]{natbib}
+\bibliographystyle{plainnat}
+
+
+% TODO: Add custom LaTeX header directives here
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Table of contents}
+\else
+  \newcommand\contentsname{Table of contents}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{List of Figures}
+\else
+  \newcommand\listfigurename{List of Figures}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{List of Tables}
+\else
+  \newcommand\listtablename{List of Tables}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{Figure}
+\else
+  \newcommand\figurename{Figure}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{Table}
+\else
+  \newcommand\tablename{Table}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Listing}
+\newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage[]{natbib}
+\bibliographystyle{plainnat}
+\usepackage{bookmark}
+
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={Architecting the Digital RES Learning Factory: A Scalable MING+React Telemetry Pipeline for Multi-Vector Energy Systems},
+  pdfkeywords={smart grid, microgrid, MING stack, CPS, learning
+factory, renewable energy, telemetry, edge-to-cloud, canonical data
+model, Industrial Internet of Things (IIoT)},
+  pdfcreator={LaTeX via pandoc},
+  unicode=true,
+	bookmarksopen={true},
+	pdffitwindow=true, 
+	colorlinks=true, 
+	linkcolor=bluecite, 
+	citecolor=bluecite, 
+	urlcolor=bluecite, 
+	hyperfootnotes=true, 
+	pdfstartview={FitH},
+	pdfpagemode= UseNone}
+
+\firstpage{1} 
+\makeatletter 
+\setcounter{page}{\@firstpage} 
+\makeatother
+\pubvolume{1}
+\issuenum{1}
+\articlenumber{0}
+\pubyear{\the\year{}}
+\copyrightyear{\the\year{}}
+%\externaleditor{Academic Editor: Firstname Lastname}
+\datereceived{ } 
+\daterevised{ } % Comment out if no revised date
+\dateaccepted{ } 
+\datepublished{ } 
+%\datecorrected{} % For corrected papers: "Corrected: XXX" date in the original paper.
+%\dateretracted{} % For corrected papers: "Retracted: XXX" date in the original paper.
+\hreflink{https://doi.org/} % If needed use \linebreak
+%\doinum{}
+%\pdfoutput=1 % Uncommented for upload to arXiv.org
+%\CorrStatement{yes}  % For updates
+
+\Title{Architecting the Digital RES Learning Factory: A Scalable
+MING+React Telemetry Pipeline for Multi-Vector Energy Systems}
+
+% MDPI internal command: Title for citation in the left column
+\TitleCitation{MING RES Learning Factory}
+
+% Author Orchid ID: enter ID or remove command
+\newcommand{\orcidauthorA}{0009-0000-7377-6027} 
+\newcommand{\orcidauthorB}{0000-0002-0567-267X} 
+
+% Authors, for the paper (add full first names)
+\Author{Kelvyn George Melcheizedek
+Kanchipogu\textsuperscript{1,2}, Viktar Taustyka\textsuperscript{1}}
+
+% MDPI internal command: Authors, for metadata in PDF
+\AuthorNames{Kelvyn George Melcheizedek Kanchipogu, Viktar Taustyka}
+
+% MDPI internal command: Authors, for citation in the left column
+\newcommand\getfirst[1]{\getfirstaux#1\relax} \def\getfirstaux#1#2\relax{#1}
+\newcommand{\authorformatted}{Kanchipogu, \getfirst{Kelvyn George Melcheizedek}.; Taustyka, \getfirst{Viktar}.}
+\AuthorCitation{\authorformatted}
+
+% Affiliations / Addresses (Add [1] after \address if there is only one affiliation.)
+\address[1,2]{%
+\textsuperscript{1} \quad Department of Renewable Energy Sources
+Engineering, Faculty of Environmental Management and Agriculture, West
+Pomeranian University of Technology in Szczecin\\
+\textsuperscript{2} \quad Department of Computer Science and Engineering
+(Artificial Intelligence), Karunya Institute of Technology and
+Sciences\\
+}
+
+% Contact information of the corresponding author
+\corres{Correspondence: viktar.taustyka@zut.edu.pl}
+
+% Abstract (Do not insert blank lines, i.e. \\) 
+\abstract{The paper addresses what we term the ``Impedance Mismatch''
+inherent in multi-energy microgrids---namely, the conflict where
+disparate physical domains traditionally force the use of isolated or
+highly rigid Supervisory Control and Data Acquisition (SCADA) data
+silos. We present a scalable, open-source edge-to-cloud telemetry
+pipeline orchestrated entirely through a custom MING+React stack
+(Mosquitto, InfluxDB, Node-RED, Grafana). The core architectural
+contribution is a category-specific Canonical Data Model (CDM) that
+functions as a translation layer, effectively decoupling sensor hardware
+from ingestion logic. Coupled with an automated Null-Pruning middleware
+loop and Metadata Separation, this architecture guarantees strict input
+purity prior to time-series persistence. To validate the system, the
+middleware was subjected to a high-fidelity stochastic simulation
+utilizing a Strict Corridor Algorithm to mimic physical inertia across
+12 distinct energy vectors. Simulation-based validation confirms that
+the pipeline successfully maintains data integrity for valid telemetry
+packets, achieves high accuracy in pruning malformed data, and operates
+with low latency under concurrency. These findings demonstrate the
+architecture's feasibility as a resilient, cross-domain research
+environment for modern Digital Learning Factories.}
+
+% Keywords
+\keyword{smart grid; microgrid; MING stack; CPS; learning
+factory; renewable energy; telemetry; edge-to-cloud; canonical data
+model; Industrial Internet of Things (IIoT)}
+
+\begin{document}
+
+\section{Introduction}\label{sec-intro}
+
+This paper addresses the persistent challenge of managing heterogeneous
+data streams within modern renewable energy systems (RES) laboratories
+and multi-energy microgrid deployments. In such environments, physical
+systems generate fundamentally incompatible telemetry. We define this
+friction as the \emph{Impedance Mismatch}, which occurs when
+high-frequency mechanical-electrical signals, like rapid engine
+transients, clash with slow-drifting biological and metabolic rhythms,
+such as photobioreactor metrics. Because these disparate physical
+domains cannot be natively synchronized, advanced cross-vector
+optimization remains severely restricted \citep{balogh2023digitaltwins}.
+
+When evaluating existing telemetry solutions, critical flaws are
+identified in both contemporary open-source and proprietary monitoring
+paradigms. Specifically, these architectures rely on either
+cost-prohibitive, closed industrial SCADA software or brittle Internet
+of Things (IoT) frameworks. Standard approaches often omit real-time
+structural audits and data cleansing layers, failing to meet modern
+edge-computing constraints \citep{massaad2023industry}. This design flaw
+leaves the core time-series database highly vulnerable to compounding
+``Bad Data'' corruption, which irreparably poisons long-term analytical
+accuracy before raw telemetry can ever be mapped into actionable
+visualizations. While systematic mapping studies have identified broad
+sustainability and architectural integration challenges in legacy
+Cyber-Physical Systems (CPS) frameworks \citep{gutierrez2023toward}, our
+work specifically addresses the vulnerability of the persistence layer
+to time-series data corruption. Despite these advancements, a
+significant research gap remains. Existing telemetry pipelines lack a
+lightweight, edge-level validation mechanism. Specifically, they cannot
+reconcile heterogeneous, multi-vector energy parameters into a unified
+data structure without introducing substantial computational overhead or
+database schema reconfiguration.
+
+In this study, a highly resilient architectural blueprint is presented
+to resolve these inefficiencies, featuring an explicitly open-source,
+vendor-agnostic, containerized edge-to-cloud telemetry pipeline that
+utilizes a custom MING+React stack (Mosquitto, InfluxDB, Node-RED,
+Grafana). While the general principles of the CDM and metadata-tag
+separation are derived from the pre-existing KIOZE platform
+specification, the novel, falsifiable contributions of this work are
+three-fold: * \textbf{C1}: The implementation of the category-specific
+CDM translation layer inside Node-RED middleware to dynamically decouple
+heterogeneous sensor streams (mechanical-electrical vs.~biochemical)
+without database schema alterations. * \textbf{C2}: The development and
+evaluation of an automated, edge-level Null-Pruning middleware loop,
+demonstrating its capability to guarantee 100\% data purity under
+simulated sensor fault conditions. * \textbf{C3}: The empirical
+validation of this pipeline's temporal continuity using a stochastic
+corridor algorithm, along with the performance benchmarking of
+end-to-end telemetry delivery and application programming interface
+(API) query latency under peak local concurrency.
+
+\section{Related Work}\label{sec-related-work}
+
+\subsection{CPS Reference Architectures}\label{sec-cps-architectures}
+
+In this section, we analyze the architectural boundaries of established
+Cyber-Physical Systems (CPS) and the Industrial Internet of Things
+(IIoT), and critique their deployment within renewable energy laboratory
+contexts. Conventional reference architectures often struggle when
+bridging raw physical assets with cloud-based analytics, primarily due
+to systemic limitations in handling cross-vector environments. Legacy
+frameworks mandate rigid structural coupling, which institutionalizes
+profound data inefficiencies and fails to meet modern edge-computing
+constraints \citep{gutierrez2023toward}. To address these constraints,
+containerized microservice architectures have been proposed to decouple
+ingestion and visualization services, enhancing system scalability and
+flexibility \citep{elakhdar2024exploring}.
+
+Furthermore, foundational Industry 4.0 reference models inherently
+restrict the seamless integration of high-frequency mechanical pulses
+with slow-moving biological variables. An analysis of current
+digital-twin architectures reveals that this rigid structural coupling
+institutionalizes isolated data silos. Consequently, advanced hybrid
+microgrid optimization is severely restricted, forcing researchers to
+rely on highly brittle ingestion routines
+\citep{jiang2018improved, balogh2023digitaltwins}. Similarly, the
+deployment of wireless sensor networks in large-scale environments
+requires robust data validation and routing to prevent noise propagation
+and packet drops \citep{rhesri2025development}.
+
+\subsection{MING Stack Deployments}\label{sec-ming-stack}
+
+This approach is contrasted with previous implementations that utilize
+the MING stack to identify critical operational gaps. While standard
+MING deployments excel at basic time-series ingestion for uniform data,
+they lack standardized validation middleware. Existing literature
+frequently omits real-time preprocessing at the network edge, relying
+heavily on post-ingestion processing rather than pre-ingestion
+validation. For example, Kychkin et al. \citep{kychkin2019architecture}
+proposed an InfluxData-based monitoring architecture for compressor
+stations that relies on direct data persistence without pre-ingestion
+structural validation. Similarly, Dani and Mayadewi
+\citep{dani2025aipowered} presented an AI-powered energy monitoring
+framework using Node-RED and InfluxDB, but focused primarily on
+predictive analytics rather than edge-level data cleansing. This design
+flaw leaves the destination database highly vulnerable, as hardware
+sensor degradation can immediately inject malformed telemetry into the
+persistent storage tier.
+
+To prevent this compounding error and protect historical data integrity,
+this methodology decouples input validation from storage. Unlike earlier
+MING frameworks that lack structural oversight, this architecture
+implements a robust automated null-pruning intervention. This ensures
+that only validated, cleansed data reaches the time-series database,
+addressing the calls for sustainable and self-validating data pipelines
+in modern CPS literature \citep{gutierrez2023toward}. The KIOZE platform
+specification outlines the CDM concept. However, this study isolates the
+novelty of a lightweight, edge-level Node-RED implementation of this
+null-pruning logic. We demonstrate its capability to sanitize sparse
+data structures in sub-millisecond times without index cardinality bloat
+in InfluxDB.
+
+\subsection{Learning Factory
+Implementations}\label{sec-learning-factory}
+
+A review of current Digital Learning Factory topologies exposes major
+data integration challenges. Traditional education-focused grids treat
+multi-energy telemetry as isolated silos, where fast
+mechanical-electrical vectors remain strictly segregated from slow
+biochemical vectors. These isolated physical testbeds cannot effectively
+communicate, severely limiting cross-domain pedagogical analysis
+\citep{saad2020iot}. While open-source supervisory systems have been
+developed to monitor physical microgrids using InfluxDB and Grafana
+\citep{silva2022development}, they typically do not address the
+structural differences between mechanical and biochemical vectors.
+Furthermore, although measurement-oriented frameworks like Measurify
+have been validated for home energy management and low-voltage feeders
+\citep{dhungana2025assessing}, their automatic schema validation is
+often centralized, rather than distributed to the edge.
+
+This rigid, institutionalized design is actively dismantled by
+formalizing an explicitly open-source, vendor-neutral alternative. By
+mapping localized sensor telemetry into category-specific CDMs, the
+physical sensor layer is decoupled from the logical processing tier.
+This fully decoupled integration philosophy successfully mitigates the
+historical impedance mismatch between rapid electrical transients and
+gradual metabolic shifts. It enables a comprehensive, cross-vector
+research environment, which builds upon the pedagogical and structural
+design requirements for modern learning factories
+\citep{iyer2023conversion}.
+
+\section{System Architecture}\label{sec-architecture}
+
+\subsection{Overview}\label{sec-overview}
+
+In this section, a structural and functional breakdown of the MING+React
+telemetry pipeline is provided, which serves as the core technical
+contribution. The design philosophy revolves around the implementation
+of a unified digital infrastructure that is orchestrated entirely
+through a \texttt{docker-compose.yml} configuration. This helped ensure
+every component is containerized in a portable and reproducible
+ecosystem that bridges the cyber and physical domains of the Learning
+Factory. This approach ensured the pedagogical experiments in the
+Learning Factory remain independent of hardware variations. The full
+reference implementation, comprising the Docker Compose orchestration,
+Mosquitto, InfluxDB, Node-RED, and Grafana configurations, the canonical
+data model schemas, and the React frontend source, is openly available
+\citep{kanchipogu2026platedubad}.
+
+The project services were mapped onto the Canonical 4-Layer CPS
+Architecture to maintain technical rigor
+\citep{hensler2023onpremises, jiang2018improved}. The mapping
+categorizes the stack as follows:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Perception Layer}: This tier comprises the physical and
+  virtual sensor nodes, such as photovoltaic (PV) panels, wind turbines,
+  and engine test benches, that generate raw telemetry. In the current
+  implementation, this layer operated through simulated Node-RED flows
+  to generate raw JavaScript Object Notation (JSON) telemetry from
+  virtual energy assets \citep{peniak2021redundant}.
+\item
+  \textbf{Network Layer}: Here, the \texttt{iot-mosquitto} container is
+  utilized to manage the asynchronous messaging via the Message Queuing
+  Telemetry Transport (MQTT) protocol. This layer leverages standard
+  publish-subscribe structures to handle high-frequency data traffic
+  with minimal overhead, mirroring the SLADTA digital twin data pipeline
+  design that relies on structured topic routes to decouple sensor
+  outputs from backend consumers \citep{human2020digital}.
+\item
+  \textbf{Middleware Layer}: This layer is the logic-heavy core of the
+  architecture. It leverages \texttt{node-red} for flow orchestration
+  and \texttt{influxdb} for high-frequency time-series persistence
+  \citep{kychkin2019architecture}. This layer acts as a protocol
+  normalization layer where disparate data streams are consolidated.
+\item
+  \textbf{Application Layer}: This tier provides the interface for
+  human-machine interaction with the help of a custom React frontend and
+  Grafana dashboards \citep{saad2020iot}. The frontend was implemented
+  using Vite to ensure high-performance rendering of real-time status
+  cards.
+\end{itemize}
+
+The structural mapping of these containerized services across the four
+layers is illustrated in Figure~\ref{fig-layers}.
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{pics/Figure_1_Layers.pdf}}
+
+}
+
+\caption{\label{fig-layers}Structural mapping of the MING+React stack
+onto the 4-Layer CPS Model, illustrating the containerized
+implementation (Mosquitto, Node-RED, InfluxDB, React) across layers. The
+mapping demonstrates how decoupling ingestion logic from the application
+interface enables a scalable, vendor-agnostic architecture.}
+
+\end{figure}%
+
+\subsection{Deployment Topology}\label{sec-topology}
+
+The deployment topology establishes the functional architecture for
+handling the impedance mismatch between high-velocity mechanical vectors
+and low-velocity biological vectors. The Observe-Orient-Decide-Act
+(OODA) loop framework was used to describe the functional flow of the
+pipeline, adapting the conceptual stages of cyber-physical control
+systems to structure our real-time telemetry loop. This functional
+sequence and data flow are mapped across the loop phases in
+Figure~\ref{fig-ooda}.
+
+\subsubsection{Observe: Edge Ingestion}\label{sec-observe}
+
+The Observe phase initiates at the perception layer where device nodes
+publish raw telemetry data to specific MQTT topics. This stage captures
+the raw telemetry of the Learning factory, which ranges from high-speed
+electrical yields to gradual biological growth.
+
+\subsubsection{Orient: Protocol Normalization}\label{sec-orient}
+
+This phase is handled exclusively within the Node-RED middleware. For
+the six fast mechanical-electrical vectors, such as rotational velocity
+and system current, mechanical dynamics are captured in real-time. For
+the six slow biological-thermal-chemical vectors, such as pH value and
+dissolved oxygen, the measurements are mapped to the CDM.
+
+\subsubsection{Decide: Null-Pruning and Logic}\label{sec-decide}
+
+The Decide phase is where the system's edge-level data cleaning resides.
+Currently, a custom CDM null-deletion logic is implemented within the
+Node-RED middleware to prune empty values or placeholders before
+time-series persistence, preventing empty values from polluting InfluxDB
+storage. However, full JSON schema validation and malformed packet
+rejection are currently omitted in the simulation MVP (disclosed as Gap
+3 in the system specification). Consequently, the database relies on
+clean upstream publishers or the edge null-pruning transformer.
+
+\subsubsection{Act: Visualization and User Interface (UI)
+Rendering}\label{sec-act}
+
+The Act phase finishes the loop at the application layer. In the React
+source code, real-time status cards are implemented to update as soon as
+the API receives new packets. Grafana acts on the historical data in
+InfluxDB to provide trend analysis and its panels were orchestrated to
+trigger alerts based on threshold violations. The human-centric design
+allows researchers to close the loop, enabling them to interact with a
+synchronized digital twin of the energy assets.
+
+\begin{figure}[htb]
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{pics/Figure_2_OODA.pdf}}
+
+}
+
+\caption{\label{fig-ooda}Functional topology of the telemetry pipeline
+tracing the OODA Loop, demonstrating how the Orient and Decide phases in
+Node-RED normalize 12 data vectors (6 Fast, 6 Slow) into a homogenized
+stream. This confirms that edge-level normalization successfully bridges
+the impedance mismatch between fast mechanical and slow biological
+domains.}
+
+\end{figure}%
+
+\subsection{MQTT Topic Taxonomy and Security Model}\label{sec-security}
+
+\subsubsection{MQTT Topic Taxonomy}\label{mqtt-topic-taxonomy}
+
+In this section, the logic is provided for the ``General-to-Specific''
+messaging hierarchy, which structures the communication of the MING
+pipeline. The target architecture establishes a multi-level hierarchy
+that follows a strict spatial and logical progression:
+\texttt{wksir/kioze/\{category\}/\{device\_id\}/\{stream\}}. Here,
+streams are categorized into \texttt{telemetry}, \texttt{status},
+\texttt{alarms}, and \texttt{cmd}, aligning with the hierarchical topic
+conventions discussed in modern machine-to-machine (M2M) communication
+protocols \citep{massaad2023industry}. This taxonomy ensures that the 12
+distinct data vectors remain organized and accessible.
+
+However, in the current simulation MVP, the implemented Node-RED flows
+and MQTT Access Control Lists (ACLs) utilize the prefix
+\texttt{devices/\{category\}/\{device\_id\}/\{stream\}} (specifically
+mapping telemetry to \texttt{/telemetry}, status to \texttt{/status},
+and commands to \texttt{/commands} or \texttt{/data}). The transition to
+the unified \texttt{wksir/kioze/} namespace represents an active
+onboarding target (disclosed as Gap 1 in the system specification).
+
+This structural organization is particularly powerful for the middleware
+layer. The Node-RED ingestion gateway is orchestrated to subscribe to
+the implemented telemetry stream via the wildcard pattern
+\texttt{devices/+/+/telemetry}. This allows a single functional block to
+ingest all telemetry while safely ignoring command or status topics.
+Once the migration is complete, the wildcard target will be shifted to
+\texttt{wksir/kioze/+/+/telemetry}. This enables a ``plug-and-play''
+architecture where new energy assets can be onboarded without requiring
+manual topic reconfiguration.
+
+\subsubsection{Security Model: Authentication and
+ACLs}\label{security-model-authentication-and-acls}
+
+The security posture is anchored by the principle of least privilege,
+enforced through a combination of mandatory authentication and granular
+Access Control Lists (ACLs) \citep{massaad2023industry}. The broker's
+primary configuration and a centralized ACL are utilized to verify that
+every participant in the ecosystem is strictly authenticated and
+authorized. Every device node, service, and administrative user is
+encapsulated within a unique set of credentials stored in a secured
+password database.
+
+The ACL logic ensures that individual simulation nodes are segregated
+from one another. A photovoltaic node, for instance, is authorized only
+to publish to its own \texttt{data} and \texttt{status} topics and
+subscribe to its own \texttt{commands} topic under the \texttt{devices/}
+namespace (e.g., \texttt{devices/pv/pv\_rotate/data}). It cannot read
+the telemetry of the engine bench or inject data into the wind turbine
+stream. Conversely, the Node-RED gateway is authenticated with
+high-level permissions, allowing it to read all telemetry via the
+wildcard subscription \texttt{devices/+/+/telemetry} and write to all
+command topics. This segregation prevents unauthorized or misconfigured
+nodes from injecting unauthorized data into the CDM, thereby preserving
+the integrity of the time-series corpus.
+
+For the current development phase, the MQTT broker exposes its
+communication ports to external hosts (port 40098 in production and port
+1883 in local development) to allow physical client onboarding and
+testing. The core IT/OT integration services (such as Node-RED,
+InfluxDB, and Grafana) communicate internally over the Docker bridge
+network behind an Nginx reverse proxy. However, the broker remains
+reachable externally on these configured ports, subject to
+username/password authentication and ACL rules.
+
+\section{Canonical Data Model}\label{sec-cdm}
+
+\subsection{Design Rationale}\label{sec-cdm-rationale}
+
+In this section, the transformation of raw, heterogeneous telemetry into
+a unified JSON object is detailed. The CDM buffers the acute ``Impedance
+Mismatch'' in multi-vector energy systems. It decouples high-frequency
+engine bench dynamics from slow photobioreactor metabolic rhythms. The
+Engine Bench generates six high-frequency vectors, including rotational
+velocity and active power, where critical events occur in milliseconds.
+In contrast, the Algae Photobioreactor produces six slow biological
+vectors, such as pH and dissolved oxygen, which shift over hours. The
+CDM was implemented to normalize these disparate data streams. It acts
+as a translation layer. By mapping every sensor to a specific key-value
+contract, the need for custom ingestion logic was eliminated for every
+new device, thereby synchronizing the streams. While our specific CDM
+structure is a novel contribution of this work, the conceptual benefits
+of protocol decoupling and low-cost gateway standardization are grounded
+in the M2M and IIoT monitoring platforms evaluated in
+\citep{massaad2023industry} and \citep{magadan2022lowcost}. The explicit
+definitions, speed classes, parameter keys, and ingestion intervals for
+these 12 distinct vectors are detailed in Table~\ref{tbl-vectors}. This
+ensures the React UI receives a predictable, clean data structure
+regardless of the sensor's physical origin.
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1800}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1700}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.3500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}@{}}
+\caption{Listing of the 12 energy vectors mapped to the CDM, showing
+speed classification and physical target parameters (note: in the
+simulation validation testbed, all vectors were published at a uniform
+3-second interval to align with the 3--5 second
+specification).}\label{tbl-vectors}\tabularnewline
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Vector Speed Class
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Physical Dimension
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Parameter / Vector
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Unit of Measurement
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Ingest Frequency
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Vector Speed Class
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Physical Dimension
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Parameter / Vector
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Unit of Measurement
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Ingest Frequency
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Fast (Mechanical/Electrical)} & Engine Speed &
+\texttt{engine\_speed\_rpm} & RPM & \(1000\text{ ms}\) (High-velocity
+mechanical pulse) \\
+& Torque & \texttt{torque\_nm} & Nm & \(1000\text{ ms}\) \\
+& Active Power & \texttt{active\_power\_kw} & kW & \(1000\text{ ms}\) \\
+& Grid Voltage & \texttt{grid\_voltage\_v} & V & \(1000\text{ ms}\) \\
+& Grid Current & \texttt{grid\_current\_a} & A & \(1000\text{ ms}\) \\
+& Grid Frequency & \texttt{grid\_frequency\_hz} & Hz &
+\(1000\text{ ms}\) \\
+\textbf{Slow (Biological/Thermal/Chemical)} & pH & \texttt{ph\_value} &
+pH & \(5000\text{ ms}\) (Slow metabolic drift) \\
+& Dissolved Oxygen & \texttt{dissolved\_oxygen\_do\_mg\_l} & mg/L &
+\(5000\text{ ms}\) \\
+& Optical Density & \texttt{optical\_density\_od\_560nm} & OD &
+\(5000\text{ ms}\) \\
+& Gas Pressure & \texttt{gas\_pressure\_kpa} & kPa &
+\(5000\text{ ms}\) \\
+& Methane Concentration & \texttt{methane\_ch4\_percent} & \% &
+\(5000\text{ ms}\) \\
+& Medium Temperature & \texttt{medium\_temperature\_c} & °C &
+\(5000\text{ ms}\) \\
+\end{longtable}
+
+\subsection{JSON Payload Schema}\label{sec-cdm-schema}
+
+The CDM is designed as a target schema contract between the perception
+and middleware layers. In the current implementation, the Node-RED
+middleware executes the data cleaning loop, focusing primarily on
+null-field pruning rather than packet-level schema rejection
+\citep{peniak2021redundant, costa2022focuser}. While structural audits
+and packet-level schema enforcement represent a critical target for
+physical onboarding (Gap 3), the current simulation MVP relies on the
+edge null-pruning transformer to ensure clean data reaches the database.
+The schema is anchored by mandatory root-level keys:
+\texttt{measurement}, \texttt{tags} (nested metadata), \texttt{fields}
+(nested telemetry parameters), \texttt{timestamp} (Unix epoch
+milliseconds), and \texttt{status}. This structural uniformity enables
+the API and React frontend to query any asset using a unified,
+simplified logic.
+
+The core of the architectural novelty resides in the homogenization of
+disparate energy vectors through null-pruning and metadata separation
+logic. A dynamic filtering loop was implemented using an
+\texttt{Object.entries} process to prune any key containing a null
+value. This implementation achieves a protocol-independent data
+contract, drawing architectural inspiration from the simplified message
+formats used in low-cost IIoT monitoring platforms
+\citep{magadan2022lowcost}. This is critical because, if a sensor fails,
+the middleware deletes the null key before it reaches InfluxDB,
+preventing ``Bad Data'' from polluting the database or degrading query
+performance \citep{costa2022focuser}. Simultaneously, metadata keys are
+nested under the \texttt{tags} object (e.g., \texttt{site\_id},
+\texttt{category}, \texttt{station\_id}), while raw telemetry parameters
+are nested under the \texttt{fields} object within the JSON packet,
+aligning directly with the InfluxDB Line Protocol structure
+\citep{kychkin2019architecture}. By enforcing this structural unity, the
+gap was bridged between high-velocity mechanical pulses and slow-moving
+biological drifts, allowing generic UI components to render any device's
+state by simply mapping keys within the data payload. While the
+conceptual superset schema is outlined in the pre-existing KIOZE
+platform specification, this work details its specific optimization for
+InfluxDB, implementation inside Node-RED, and empirical validation under
+concurrent load.
+
+\subsection{Engine Bench Payload Example}\label{sec-cdm-engine}
+
+The Engine Bench represents the most demanding ``Fast'' vector. Its
+high-frequency mechanical, thermal, and control parameters are mapped
+into a sub-second telemetry packet to ensure performance calculations
+remain accurate even during rapid transients.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{\{}
+  \DataTypeTok{"measurement"}\FunctionTok{:} \StringTok{"engine\_telemetry"}\FunctionTok{,}
+  \DataTypeTok{"tags"}\FunctionTok{:} \FunctionTok{\{}
+    \DataTypeTok{"site\_id"}\FunctionTok{:} \StringTok{"wksir\_kioze"}\FunctionTok{,}
+    \DataTypeTok{"category"}\FunctionTok{:} \StringTok{"engine\_bench"}\FunctionTok{,}
+    \DataTypeTok{"station\_id"}\FunctionTok{:} \StringTok{"bench\_r121"}\FunctionTok{,}
+    \DataTypeTok{"device\_model"}\FunctionTok{:} \StringTok{"eddy\_current\_dyno\_16kw"}\FunctionTok{,}
+    \DataTypeTok{"fuel\_type"}\FunctionTok{:} \StringTok{"bioethanol\_blend"}
+  \FunctionTok{\},}
+  \DataTypeTok{"fields"}\FunctionTok{:} \FunctionTok{\{}
+    \DataTypeTok{"engine\_speed\_rpm"}\FunctionTok{:} \FloatTok{3450.2}\FunctionTok{,}
+    \DataTypeTok{"torque\_nm"}\FunctionTok{:} \FloatTok{42.15}\FunctionTok{,}
+    \DataTypeTok{"measured\_power\_kw"}\FunctionTok{:} \FloatTok{15.2}\FunctionTok{,}
+    \DataTypeTok{"fuel\_consumption\_rate\_kg\_h"}\FunctionTok{:} \FloatTok{4.2}\FunctionTok{,}
+    \DataTypeTok{"exhaust\_temperature\_c"}\FunctionTok{:} \FloatTok{650.0}\FunctionTok{,}
+    \DataTypeTok{"throttle\_position\_percent"}\FunctionTok{:} \FloatTok{85.0}
+  \FunctionTok{\},}
+  \DataTypeTok{"timestamp"}\FunctionTok{:} \DecValTok{1711627225000}\FunctionTok{,}
+  \DataTypeTok{"status"}\FunctionTok{:} \StringTok{"Dynamic\_Load\_Test"}
+\FunctionTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Algae Photobioreactor Payload Example}\label{sec-cdm-algae}
+
+In contrast, the Algae Photobioreactor demonstrates the CDM's
+flexibility for ``Slow'' vectors. Its six biological-chemical parameters
+are mapped into the identical structural framework used for the engine
+bench.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{\{}
+  \DataTypeTok{"measurement"}\FunctionTok{:} \StringTok{"algae\_telemetry"}\FunctionTok{,}
+  \DataTypeTok{"tags"}\FunctionTok{:} \FunctionTok{\{}
+    \DataTypeTok{"site\_id"}\FunctionTok{:} \StringTok{"wksir\_kioze"}\FunctionTok{,}
+    \DataTypeTok{"category"}\FunctionTok{:} \StringTok{"algae"}\FunctionTok{,}
+    \DataTypeTok{"station\_id"}\FunctionTok{:} \StringTok{"inside\_farm\_r121"}\FunctionTok{,}
+    \DataTypeTok{"device\_model"}\FunctionTok{:} \StringTok{"tubular\_pbr\_v2"}\FunctionTok{,}
+    \DataTypeTok{"culture\_strain"}\FunctionTok{:} \StringTok{"chlorella\_vulgaris"}
+  \FunctionTok{\},}
+  \DataTypeTok{"fields"}\FunctionTok{:} \FunctionTok{\{}
+    \DataTypeTok{"ph\_value"}\FunctionTok{:} \FloatTok{7.15}\FunctionTok{,}
+    \DataTypeTok{"temperature\_medium\_c"}\FunctionTok{:} \FloatTok{26.5}\FunctionTok{,}
+    \DataTypeTok{"dissolved\_oxygen\_do\_mg\_l"}\FunctionTok{:} \FloatTok{8.45}\FunctionTok{,}
+    \DataTypeTok{"optical\_density\_od\_560nm"}\FunctionTok{:} \FloatTok{0.92}\FunctionTok{,}
+    \DataTypeTok{"dissolved\_co2\_mg\_l"}\FunctionTok{:} \FloatTok{31.0}\FunctionTok{,}
+    \DataTypeTok{"salinity\_ppt"}\FunctionTok{:} \FloatTok{5.0}
+  \FunctionTok{\},}
+  \DataTypeTok{"timestamp"}\FunctionTok{:} \DecValTok{1711627220000}\FunctionTok{,}
+  \DataTypeTok{"status"}\FunctionTok{:} \StringTok{"Cultivating"}
+\FunctionTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+These examples illustrate the strict nesting of metadata under the
+\texttt{tags} object and telemetry under the \texttt{fields} object. By
+grouping and pre-processing these payloads at the network edge, the CDM
+successfully hides the underlying complexity of the multi-vector energy
+system, ensuring the digital twin of the Learning Factory remains
+synchronized.
+
+\section{Validation}\label{sec-validation}
+
+\subsection{Experimental Setup and
+Conditions}\label{sec-experimental-setup}
+
+In this section, the rigorous environment built to stress-test the
+MING+React architecture is defined. A high-fidelity stochastic
+simulation was orchestrated in Node-RED to model physical assets like
+photovoltaic systems and wind turbines, employing open-source ingestion
+tools similar to those described in modern energy monitoring literature
+\citep{dani2025aipowered}. To validate the pipeline under realistic
+conditions, we developed a custom simulation model utilizing a strict
+corridor algorithm to mimic physical inertia and sensor noise. This
+custom model provides a baseline for evaluating edge-level filtering
+strategies similar to the fog-based sensor-ranking paradigms discussed
+generally in \citep{costa2022focuser}. Unlike standard random number
+generation, the algorithm operates on a recursive random walk where each
+data point is constrained to a ±2\% window relative to its predecessor.
+Mathematically, the next telemetry state \(x_t\) is computed recursively
+as:
+
+\[x_t = \max\left(x_{\min}, \, \min\left(x_{\max}, \, x_{t-1} + r_t \cdot (0.02 \cdot x_{t-1})\right)\right)\]
+
+where \(r_t \sim \mathcal{U}(-1, 1)\) is a uniform random variable, and
+\([x_{\min}, x_{\max}]\) represent physically realistic saturation
+boundaries to prevent infinite drift. The ±2\% step size models the
+physical thermal and mechanical inertia of cyber-physical assets (such
+as photobioreactors and dyno engine benches) relative to the sampling
+interval. A larger threshold would introduce unrealistic sensor jitter
+that exceeds physical actuator slew rates, while a smaller step fails to
+test the pipeline's dynamic rendering.
+
+In the Node-RED middleware simulation nodes, this algorithm is
+implemented as shown in Listing~\ref{lst-corridor-code}:
+
+\begin{codelisting}
+
+\caption{\label{lst-corridor-code}Node-RED JavaScript implementation of
+the Strict Corridor Algorithm.}
+
+\centering{
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{// Retrieve previous state or initialize}
+\KeywordTok{const}\NormalTok{ prevVal }\OperatorTok{=}\NormalTok{ context}\OperatorTok{.}\FunctionTok{get}\NormalTok{(}\StringTok{\textquotesingle{}prevVal\textquotesingle{}}\NormalTok{) }\OperatorTok{||}\NormalTok{ initVal}\OperatorTok{;}
+\CommentTok{// Generate uniform step in [{-}1, 1)}
+\KeywordTok{const}\NormalTok{ r }\OperatorTok{=}\NormalTok{ (}\BuiltInTok{Math}\OperatorTok{.}\FunctionTok{random}\NormalTok{() }\OperatorTok{{-}} \FloatTok{0.5}\NormalTok{) }\OperatorTok{*} \DecValTok{2}\OperatorTok{;} 
+\CommentTok{// Compute new value constrained to ±2\% of prevVal}
+\KeywordTok{let}\NormalTok{ newVal }\OperatorTok{=}\NormalTok{ prevVal }\OperatorTok{+}\NormalTok{ (r }\OperatorTok{*}\NormalTok{ (prevVal }\OperatorTok{*} \FloatTok{0.02}\NormalTok{))}\OperatorTok{;} 
+\CommentTok{// Apply saturation boundaries to prevent infinite drift}
+\NormalTok{newVal }\OperatorTok{=} \BuiltInTok{Math}\OperatorTok{.}\FunctionTok{max}\NormalTok{(minVal}\OperatorTok{,} \BuiltInTok{Math}\OperatorTok{.}\FunctionTok{min}\NormalTok{(maxVal}\OperatorTok{,}\NormalTok{ newVal))}\OperatorTok{;} 
+\NormalTok{context}\OperatorTok{.}\FunctionTok{set}\NormalTok{(}\StringTok{\textquotesingle{}prevVal\textquotesingle{}}\OperatorTok{,}\NormalTok{ newVal)}\OperatorTok{;}
+\ControlFlowTok{return}\NormalTok{ newVal}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+}
+
+\end{codelisting}%
+
+Representative simulation parameters include Engine Speed
+(\(x_0 = 3000\text{ RPM}\), range \([1000, 4500]\)), pH (\(x_0 = 7.0\),
+range \([6.0, 8.5]\)), Active Power (\(x_0 = 12.5\text{ kW}\), range
+\([0, 16]\)), and Medium Temperature
+(\(x_0 = 25.0\text{ }^\circ\text{C}\), range \([15, 35]\)).
+
+The twelve core physical vectors, which consist of six fast vectors and
+six slow vectors, were simultaneously stressed under peak
+high-concurrency load conditions. The simulation consisted of 10
+concurrent publishers (representing the 10 data categories active in the
+Node-RED flow, matching the database schema measurements). Each
+publisher transmitted telemetry messages at a uniform 3-second interval,
+representing a sustained aggregate messaging rate of 3.33 messages per
+second. The stability test run lasted continuously for a total duration
+of 30 minutes, publishing a total packet count of 6,000 telemetry
+messages (600 packets per category). Physical assets target distinct
+rates, with 1 second for fast vectors and 5 seconds for slow vectors
+(Table~\ref{tbl-vectors}). However, this uniform 3-second simulation
+rate created a sustained, high-concurrency load on the middleware,
+serving as a benchmark for reliability \citep{kaestner2018design}.
+
+The telemetry dataset visualized in Figure~\ref{fig-corridor} was
+extracted from the InfluxDB \texttt{renewable\_energy} bucket using the
+\texttt{capture\_realtime.ps1} PowerShell script via the InfluxDB REST
+API. The plot demonstrates the temporal continuity modeled by the
+stochastic corridor algorithm. While the KIOZE specification defines
+physics-based models for production hardware, this validation MVP uses
+the stochastic corridor algorithm. This helps simulate physical inertia
+and test persistence under continuous, noisy conditions.
+
+\textbf{Use of generative AI.} During the preparation of this
+manuscript, the authors used Anthropic Claude (Sonnet 4.x and Opus 4.x)
+for source-bound section drafting, structural editing, figure-source
+generation, and bibliography auditing, under the workflow documented in
+the project repository. All technical claims about the KIOZE Edu-Bad
+architecture were independently verified against the system
+specification document. All citations were independently verified
+against the cited sources. The authors reviewed and edited every AI
+output and take full responsibility for the content of this publication.
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{pics/Figure_3_Corridor_vs_Noise.pdf}}
+
+}
+
+\caption{\label{fig-corridor}Comparison of the strict corridor algorithm
+against unfiltered white noise. The plot shows the normalized active
+power (\(active\_power\_kw\)) vector over a 300-second simulation
+window. The dataset was extracted from the InfluxDB
+\texttt{renewable\_energy} bucket using the
+\texttt{capture\_realtime.ps1} PowerShell script via the InfluxDB REST
+API. The x-axis represents Elapsed Time in seconds (s), and the y-axis
+represents the normalized power output (\%). The legend compares the
+strict corridor simulation path (labeled ``Temporal Continuity'',
+representing physical inertia) against the baseline random walk with
+unfiltered noise (labeled ``Stochastic Volatility'', illustrating
+unconstrained fluctuations).}
+
+\end{figure}%
+
+\subsection{Observations: The Pipeline in
+Motion}\label{sec-observations}
+
+This topology was designed to synchronize twelve distinct data vectors
+that represent the intersection of high-frequency mechanical speed and
+slow biological inertia. By resolving the challenges of disparate
+ingestion frequencies, this normalization creates a ``universal
+translator'' effect, ensuring that every data point adopts a unified,
+synchronized JSON format regardless of its source frequency. Enforcing
+this structural unity transforms the raw telemetry stream into a
+high-integrity, homogenized dataset.
+
+\subsection{Performance Results}\label{sec-results}
+
+The architectural feasibility and data routing of the pipeline were
+evaluated within a local, containerized development environment. This
+setup served as a validation testbed to verify that the universal
+translator and edge-level null-pruning logic operate correctly without
+introducing significant computational overhead.
+
+First, valid packet integrity was verified through a comparative audit
+between the Node-RED ingress counts and InfluxDB point counts. Over a
+sample of \(N = 1000\) valid telemetry packets, the audit verified zero
+packet loss. This yields a packet integrity rate of 100\% with zero
+statistical variance (\(\sigma^2 = 0\)). To evaluate the edge-level
+null-pruning loop, we manually injected \(N = 50\) malformed packets
+into the MQTT broker over a 10-minute trial. We define a malformed
+packet as a JSON payload where one or more telemetry fields contain a
+literal \texttt{null} value. The scoring rule defined accuracy as the
+ratio of successfully pruned null fields to the total injected null
+fields. The evaluation achieved 100\% null-pruning accuracy. Every null
+key was successfully removed at the middleware layer. This prevented
+empty values from leaking into InfluxDB, with zero database corruption
+observed.
+
+Second, API query response latency was benchmarked using the
+\texttt{.NET} \texttt{System.Diagnostics.Stopwatch} utility. We recorded
+\(N = 500\) HTTP GET requests to the
+\texttt{/api/summary/engine\_test\_bench} endpoint via the Nginx proxy.
+This test yielded an average (mean) response latency of
+\(42.5\text{ ms}\) with a standard deviation of
+\(\sigma = 3.8\text{ ms}\). The median response time was
+\(42.1\text{ ms}\) and the 95th percentile (\(P_{95}\)) was
+\(48.2\text{ ms}\). This is in contrast to heavy immersive 3D or
+Augmented Reality (AR) digital twins that report latencies exceeding 100
+ms \citep{caiza2023digitaltwin}. To measure the middleware's internal
+transformation overhead, we used Node-RED timestamp hooks across
+\(N = 1000\) processed packets. This recorded the duration between the
+gateway's MQTT ingress and the database write input hook. The average
+transformation overhead was \(0.85\text{ ms}\) with a standard deviation
+of \(\sigma = 0.12\text{ ms}\) and a 95th percentile of
+\(1.02\text{ ms}\). This confirms that the CDM normalization logic runs
+in sub-millisecond times, causing negligible overhead on the edge node.
+
+Finally, end-to-end system success was measured during a 30-minute
+stability run under peak simulation load (totaling 6,000 published
+telemetry packets). The pipeline achieved an end-to-end success rate of
+99.8\% (5,988 out of 6,000 packets successfully written). The remaining
+12 packets were dropped during transient client socket reconnects under
+concurrency spikes. This yields a success rate variance of
+\(\sigma^2 = 0.002\) over the test duration.
+
+Table~\ref{tbl-metrics} summarizes the MING+React pipeline functional
+verification metrics obtained in the simulation validation testbed. The
+system was evaluated to confirm it meets the functional targets required
+for learning factory simulation and visualization.
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}@{}}
+\caption{Summary of the MING+React pipeline functional verification
+under simulated validation
+conditions.}\label{tbl-metrics}\tabularnewline
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Function / Verification Goal
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Sample Size (\(N\)) or Test Setup
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Observed Value (Mean / Dispersion)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Status
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Function / Verification Goal
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Sample Size (\(N\)) or Test Setup
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Observed Value (Mean / Dispersion)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Status
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Valid Packet Integrity} & \(N = 1000\) packets & \(100\%\)
+integrity (\(\sigma^2 = 0\%\) variance) & PASSED \\
+\textbf{Null-Pruning Accuracy} & \(N = 50\) malformed payloads &
+\(100\%\) field pruning (\(0\%\) leak) & OPTIMAL \\
+\textbf{Avg. API Latency} & \(N = 500\) requests & \(42.5\text{ ms}\)
+(\(\sigma = 3.8\text{ ms}\), \(P_{95} = 48.2\text{ ms}\)) & PASSED \\
+\textbf{Transformation Overhead} & \(N = 1000\) packets &
+\(0.85\text{ ms}\) (\(\sigma = 0.12\text{ ms}\),
+\(P_{95} = 1.02\text{ ms}\)) & OPTIMAL \\
+\textbf{End-to-End Success Rate} & 30-min stability run (6000 pkts) &
+\(99.8\%\) success rate (5988/6000 writes) & PASSED \\
+\end{longtable}
+
+\section{Discussion}\label{sec-discussion}
+
+\subsection{Scalability and Extension}\label{sec-scalability}
+
+In this section, the structural resilience of the MING+React pipeline is
+evaluated under simulated expansion scenarios. The architecture is not a
+static monolith. An audit of the \texttt{docker-compose.yml} and the CDM
+logic confirmed that the system handles additional data vectors with
+minimal re-engineering. The CDM mapping logic implemented in Node-RED
+acts as a decoupling layer. This allows for horizontal scaling---where
+adding new stations such as \texttt{biogas\_2} or \texttt{pv\_3}
+requires only a new MQTT configuration rather than a rewrite of the core
+middleware \citep{steindl2021semantic}. The telemetry ingestion is
+synchronized so that every new asset immediately inherits the
+pre-validation and null-pruning benefits of the CDM.
+
+The InfluxDB 2.x storage engine is structurally suited to handle
+increased sensor density without performance degradation. The schema was
+optimized by utilizing a metadata separation strategy. Immutable
+attributes are separated into tags (e.g., \texttt{device\_id},
+\texttt{location}), while transient telemetry is mapped to fields (e.g.,
+\texttt{engine\_speed\_rpm}). This metadata separation ensures that
+query response times remain stable even as the number of concurrent
+vectors grows \citep{silva2022development}. While future benchmarking is
+required to evaluate scalability bottlenecks under massive dimensional
+increases, this metadata separation suggests the system is structurally
+positioned to accommodate additional data vectors without substantial
+schema reconfiguration.
+
+\subsection{Limitations and Open Challenges}\label{sec-limitations}
+
+It is necessary to remain grounded in the current implementation's
+scope. While the results are promising, several edge cases were
+identified that warrant further investigation. The MQTT broker
+performance may exhibit increased network jitter as the number of
+high-frequency publishers scales into the hundreds
+\citep{kaestner2018design}. An audit of the Node-RED runtime revealed
+that the CPU overhead of processing complex recursive random walks for
+every vector could become a bottleneck. Currently, the validation
+environment is `loopback-only'. This means the benchmarked 42.5 ms
+latency does not account for the non-deterministic latencies of physical
+Wi-Fi or LoRaWAN hardware \citep{navarro2022lorawan}.
+
+Furthermore, scaling the MING stack to support hundreds of physical
+devices introduces a significant risk of an index cardinality explosion
+in InfluxDB. Because the middleware dynamically maps root-level metadata
+keys (such as \texttt{device\_id}) to InfluxDB tags---which are indexed
+in-memory using an inverted index structure---an unbounded growth in the
+number of unique tags would degrade query performance. To mitigate this
+risk, future deployments must enforce strict tag whitelisting, limit
+dynamic tag generation, or utilize relational databases to manage
+high-cardinality metadata separately.
+
+The transition from a simulated testbed to a physical deployment will
+likely surface timing discrepancies. The strict ±2\% corridor was
+designed to preserve physical inertia in our simulation. However,
+transitioning to physical assets may require dynamic threshold
+adjustments to handle the stochastic sensor noise characteristics
+observed in real-world renewable energy monitoring architectures
+\citep{velasquez2021monitoring}. There is a recognized need for future
+testing with physical hardware latency to ensure the ``universal
+translator'' remains robust against the unpredictable packet loss
+inherent in industrial environments.
+
+\subsection{Comparison to Related Approaches}\label{sec-comparison}
+
+Traditional SCADA systems often operate as closed, black-box solutions.
+In contrast, this open-source containerized stack provides a level of
+transparency and flexibility that proprietary telemetry solutions cannot
+match. While standard IoT deployments typically ingest and store raw
+telemetry without edge-level validation, this architecture introduces
+pre-ingestion null-pruning to filter out sensor placeholders before they
+reach persistent storage.
+
+Furthermore, the presentation layer in this study was decoupled from the
+database through a custom React frontend, offering a more responsive and
+specialized research interface than standard Grafana dashboards alone.
+By orchestrating established open-source components into a unified,
+CDM-driven pipeline, the proposed architecture demonstrates that
+research-grade telemetry is achievable without the vendor lock-in of
+industrial automation suites, while preserving database integrity.
+
+\section{Conclusions}\label{sec-conclusions}
+
+\subsection{Summary of Achievements}\label{summary-of-achievements}
+
+In this section, the technical outcomes are summarized by synthesizing
+the primary contributions of the engineered MING+React pipeline design.
+A CDM was successfully validated, operating as an essential structural
+buffer, mitigating the inherent conflict between high-velocity
+mechanical pulses and slow-moving biological variables. The feasibility
+of the MING+React telemetry architecture was verified by demonstrating
+stable null-pruning data integrity and low API latency under simulated
+concurrency. This design maintains high end-to-end delivery reliability
+and builds on the cyber-physical system design principles described by
+Rao and others \citep{rao2017cyber}.
+
+\subsection{Current Limitations of the
+Study}\label{current-limitations-of-the-study}
+
+While a robust operational baseline was established, the validation
+matrix was constrained to a loopback-only containerized setup operating
+within a localized Docker bridge network. Because distributed physical
+field deployments were omitted from this phase, the long-range wide-area
+network (WAN) jitter and unpredictable packet loss characteristic of
+physical industrial environments were bypassed
+\citep{bochie2019labsensing}. By decoupling external latency from the
+internal middleware metrics, a scientifically objective perspective on
+the stack's baseline performance was maintained. However, it is
+acknowledged that these metrics represent ideal conditions rather than a
+fully deployed physical architecture.
+
+\subsection{Proposed Future Work}\label{proposed-future-work}
+
+The engineering roadmap for the subsequent development phase focuses on
+the integration of physical edge hardware. The telemetry ingestion
+strategy will be migrated from simulated Node-RED nodes toward actual
+microcontrollers secured by strict MQTT authentication and ACLs
+\citep{promwungkwa2023evaluation}. Furthermore, it is proposed to expand
+the existing CDM contract to natively support standardized machine
+learning models across the entire fleet of devices
+\citep{kawa2023integration}. This will enable predictive grid state
+estimation while continuing to rely on the benchmarked null-pruning
+logic to guarantee strict input purity.
+
+%\authorcontributions{For research articles with several authors, a short paragraph specifying their individual contributions must be provided. The following statements should be used ``Conceptualization, X.X. and Y.Y.; methodology, X.X.; software, X.X.; validation, X.X., Y.Y. and Z.Z.; formal analysis, X.X.; investigation, X.X.; resources, X.X.; data curation, X.X.; writing---original draft preparation, X.X.; writing---review and editing, X.X.; visualization, X.X.; supervision, X.X.; project administration, X.X.; funding acquisition, Y.Y. All authors have read and agreed to the published version of the manuscript.'', please turn to the  \href{http://img.mdpi.org/data/contributor-role-instruction.pdf}{CRediT taxonomy} for the term explanation. Authorship must be limited to those who have contributed substantially to the work~reported.}
+
+\authorcontributions{Conceptualization, V.T.; Methodology, V.T. and
+K.G.M.K.; Software, V.T. and K.G.M.K.; Validation, V.T. and K.G.M.K.;
+Formal Analysis, V.T. and K.G.M.K.; Investigation, V.T. and K.G.M.K.;
+Resources, V.T. and K.G.M.K.; Data Curation, V.T. and K.G.M.K.; Writing
+--- Original Draft Preparation, V.T. and K.G.M.K.; Writing --- Review \&
+Editing, V.T. and K.G.M.K.; Visualization, V.T. and K.G.M.K.;
+Supervision, V.T.; Project Administration, V.T.; Funding Acquisition,
+V.T. All authors have read and agreed to the published version of the
+manuscript.}
+
+
+%\funding{Please add: ``This research received no external funding'' or ``This research was funded by NAME OF FUNDER grant number XXX.'' and  and ``The APC was funded by XXX''. Check carefully that the details given are accurate and use the standard spelling of funding agency names at \url{https://search.crossref.org/funding}, any errors may affect your future funding.}
+
+\funding{This research was supported by a donation from Fundacja PGE
+(PGE Foundation, Poland), agreement number 2025/VII/29, awarded to the
+Department of Renewable Energy Sources Engineering at the West
+Pomeranian University of Technology in Szczecin. The donation supported
+the development of the educational--research platform for integrated
+renewable energy sources and energy storage systems described in this
+manuscript. The APC was funded by the Faculty of Environmental
+Management and Agriculture (Wydział Kształtowania Środowiska i
+Rolnictwa), West Pomeranian University of Technology in Szczecin.}
+
+%\institutionalreview{In this section, you should add the Institutional Review Board Statement and approval number, if relevant to your study. You might choose to exclude this statement if the study did not require ethical approval. Please note that the Editorial Office might ask you for further information. Please add “The study was conducted in accordance with the Declaration of Helsinki, and approved by the Institutional Review Board (or Ethics Committee) of NAME OF INSTITUTE (protocol code XXX and date of approval).” for studies involving humans. OR “The animal study protocol was approved by the Institutional Review Board (or Ethics Committee) of NAME OF INSTITUTE (protocol code XXX and date of approval).” for studies involving animals. OR “Ethical review and approval were waived for this study due to REASON (please provide a detailed justification).” OR “Not applicable” for studies not involving humans or animals.}
+
+
+
+%\informedconsent{Any research article describing a study involving humans should contain this statement. Please add ``Informed consent was obtained from all subjects involved in the study.'' OR ``Patient consent was waived due to REASON (please provide a detailed justification).'' OR ``Not applicable'' for studies not involving humans. You might also choose to exclude this statement if the study did not involve humans. Written informed consent for publication must be obtained from participating patients who can be identified (including by the patients themselves). Please state ``Written informed consent has been obtained from the patient(s) to publish this paper'' if applicable.}
+
+
+
+%\dataavailability{We encourage all authors of articles published in MDPI journals to share their research data. In this section, please provide details regarding where data supporting reported results can be found, including links to publicly archived datasets analyzed or generated during the study. Where no new data were created, or where data is unavailable due to privacy or ethical restrictions, a statement is still required. Suggested Data Availability Statements are available in section ``MDPI Research Data Policies'' at \url{https://www.mdpi.com/ethics}.} 
+
+\dataavailability{The platform source code, reference configurations,
+and canonical data model schemas supporting the architecture presented
+in this study are openly available on GitHub at
+https://github.com/Viktar-T/plat-edu-bad-data-mvp (release
+v1.0-mdpi-submission) and permanently archived on Zenodo at
+https://doi.org/10.5281/zenodo.20415136.}
+
+% Only for journal Nursing Reports
+%\publicinvolvement{Please describe how the public (patients, consumers, carers) were involved in the research. Consider reporting against the GRIPP2 (Guidance for Reporting Involvement of Patients and the Public) checklist. If the public were not involved in any aspect of the research add: ``No public involvement in any aspect of this research''.}
+
+% Only for journal Nursing Reports
+%\guidelinesstandards{Please add a statement indicating which reporting guideline was used when drafting the report. For example, ``This manuscript was drafted against the XXX (the full name of reporting guidelines and citation) for XXX (type of research) research''. A complete list of reporting guidelines can be accessed via the equator network: \url{https://www.equator-network.org/}.}
+
+%\acknowledgments{In this section you can acknowledge any support given which is not covered by the author contribution or funding sections. This may include administrative and technical support, or donations in kind (e.g., materials used for experiments).}
+
+\acknowledgments{During the preparation of this manuscript, the authors
+used Anthropic Claude (Sonnet 4.x and Opus 4.x) for the purposes of
+source-bound section drafting, structural editing, figure-source
+generation, and bibliography auditing. The authors have reviewed and
+edited the output and take full responsibility for the content of this
+publication.}
+
+%\conflictsofinterest{Declare conflicts of interest or state ``The authors declare no conflicts of interest.'' Authors must identify and declare any personal circumstances or interest that may be perceived as inappropriately influencing the representation or interpretation of reported research results. Any role of the funders in the design of the study; in the collection, analyses or interpretation of data; in the writing of the manuscript; or in the decision to publish the results must be declared in this section. If there is no role, please state ``The funders had no role in the design of the study; in the collection, analyses, or interpretation of data; in the writing of the manuscript; or in the decision to publish the results''.} 
+
+\conflictsofinterest{The authors declare no conflicts of interest. The
+sponsors had no role in the design, execution, interpretation, or
+writing of the study.}
+
+\begin{adjustwidth}{-\extralength}{0cm}
+%\printendnotes[custom] % Un-comment to print a list of endnotes
+
+\reftitle{References}
+
+\bibliography{bibliography.bib}
+
+
+\PublishersNote{}
+\end{adjustwidth}\end{document}

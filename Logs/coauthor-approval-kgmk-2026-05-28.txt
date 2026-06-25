@@ -1,0 +1,101 @@
+CO-AUTHOR APPROVAL — KELVYN GEORGE MELCHEIZEDEK KANCHIPOGU
+===========================================================
+
+Manuscript
+----------
+Title       : Architecting the Digital RES Learning Factory:
+              A Scalable MING+React Telemetry Pipeline for
+              Multi-Vector Energy Systems
+Target venue: MDPI Energies, Section A1 — Smart Grids and Microgrids
+Authors     : Kelvyn George Melcheizedek Kanchipogu (first author)
+              Viktar Taustyka (senior author, corresponding author)
+
+Approval
+--------
+Date of approval    : 2026-05-28
+Mode of approval    : Oral confirmation given by K.G.M.K. to V.T.
+Recorded by         : V.T. (corresponding author)
+
+Scope of approval
+-----------------
+K.G.M.K. has approved the exact set of submission files in:
+  D:\Life-OS\130-V-RESEARCH\70_outputs\Digital-KIOZE\01_Articles\
+    01_Art-1_System-Archit\publishing\03_submission\v1-submitted\
+
+with the following SHA-256 digests (captured 2026-05-28 from
+v1-submitted/SHA256SUMS.txt):
+
+  a49d42de894932003cb21017154a5fc3316c084bebdb32919aef99dc45367d61
+    article.pdf
+  a90f4b7cf39f143d2e9727513b18b8c5dcac2a566f179d848e4bbc2d159eaf93
+    cover-letter.pdf
+  28154486f88ab600d38416a1529a8d50afea7079287e05e2849cd53e0af64b43
+    graphical-abstract.png
+  492642da5025ce524af2ae531b010439508c6f788c1c70ce4fd45dff910ecb07
+    ihrke-template-v1.zip
+
+K.G.M.K.'s approval covers:
+
+  - The author list, author order, and corresponding-author
+    designation (K.G.M.K. first author; V.T. senior and
+    corresponding).
+  - The author-name spelling "Kelvyn George Melcheizedek
+    Kanchipogu" (Western order, family name last) as it
+    appears in the manuscript and in the ORCID record
+    https://orcid.org/0009-0000-7377-6027.
+  - K.G.M.K.'s institutional email
+    kanchipogukelvyn@karunya.edu.in as the address listed in
+    the manuscript.
+  - K.G.M.K.'s dual affiliation: Department of Renewable
+    Energy Sources Engineering, Faculty of Environmental
+    Management and Agriculture, West Pomeranian University
+    of Technology in Szczecin (IAESTE trainee host); and
+    Department of Computer Science and Engineering
+    (Artificial Intelligence), Karunya Institute of
+    Technology and Sciences, Coimbatore, India (home).
+  - The CRediT contribution statement in article.qmd
+    `authorcontributions:` (K.G.M.K. on the 10 shared roles;
+    V.T. on all 14 roles including Conceptualization,
+    Supervision, Project Administration, and Funding
+    Acquisition alone).
+  - The Funding statement (PGE Foundation donation
+    2025/VII/29, APC by WKSiR ZUT under the standing ≥140
+    punktów MEiN regulation).
+  - The Data Availability Statement pointing at
+    https://github.com/Viktar-T/plat-edu-bad-data-mvp
+    (release v1.0-mdpi-submission) and Zenodo DOI
+    10.5281/zenodo.20415136 — including K.G.M.K.'s authorship
+    of the Zenodo software citation (see
+    @kanchipogu2026platedubad in bibliography.bib).
+  - The Conflicts-of-Interest declaration (none).
+  - The Acknowledgments block disclosing AI use (Anthropic
+    Claude, Sonnet 4.x and Opus 4.x).
+  - The cover letter (`cover-letter.pdf`) with V.T. named as
+    corresponding author and the two MDPI-required
+    statements present.
+  - The choice of suggested reviewers in
+    `publishing/02_pre-submission/suggested-reviewers.md`
+    (Anna Manowska, Piotr Borkowski, Konrad Świrski) — none
+    of whom are recent collaborators or co-authors of either
+    K.G.M.K. or V.T.
+
+K.G.M.K. has also confirmed that neither this manuscript nor
+any substantial part of it is currently under consideration
+for publication with, or published in, another journal — in
+agreement with the cover letter's required statement.
+
+Follow-up actions agreed with K.G.M.K.
+--------------------------------------
+None outstanding. K.G.M.K. has no edits requested before
+submission.
+
+Standing in for written confirmation
+------------------------------------
+This file substitutes for the recommended written ("I
+approve") e-mail confirmation. If MDPI subsequently asks
+for written evidence of co-author approval at any point in
+peer review or production, K.G.M.K. has agreed to provide a
+short confirmatory e-mail referencing this log entry on
+request.
+
+End of record.

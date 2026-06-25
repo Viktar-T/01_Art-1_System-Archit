@@ -16,7 +16,7 @@ Working title: *Architecting the Digital RES Learning Factory: A Scalable MING+R
 
 Target journal: **MDPI *Energies***, Section A1 (Smart Grids and Microgrids).
 
-Senior author: Viktar Taustyha. Co-author: Kanchipogu Kelvyn G Melcheizedek.
+Senior author: Viktar Taustyka. Co-author: Kelvyn George Melcheizedek Kanchipogu.
 
 ---
 
@@ -47,11 +47,22 @@ Senior author: Viktar Taustyha. Co-author: Kanchipogu Kelvyn G Melcheizedek.
 │       ├── article_writing_plan.md        ← per-section drafting plan
 │       └── email_reply.md
 │
-└── ihrke-template/                        ← OUTPUT machine; the article lives here
-    ├── article.qmd                        ← THE manuscript source (single file)
-    ├── bibliography.bib                   ← every cited reference
-    ├── pics/                              ← every figure that ships
-    └── _extensions/ihrke/mdpi/            ← MDPI Quarto extension; never touch
+├── ihrke-template/                        ← OUTPUT machine; the article lives here
+│   ├── article.qmd                        ← THE manuscript source (single file)
+│   ├── bibliography.bib                   ← every cited reference
+│   ├── pics/                              ← every figure that ships
+│   └── _extensions/ihrke/mdpi/            ← MDPI Quarto extension; never touch
+│
+└── publishing/                            ← LIFECYCLE machine; submission → DOI
+    ├── README.md                          ← navigation
+    ├── STATUS.md                          ← one-line current state
+    ├── 00_publishing-workflow.md          ← S0–S6 workflow with entry/exit gates
+    ├── 01_mdpi-requirements/              ← author guidelines, ethics, AI disclosure, APC
+    ├── 02_pre-submission/                 ← cover letter, reviewers, CRediT, statements
+    ├── 03_submission/                     ← submission record, pre-flight, v1 snapshot
+    ├── 04_peer-review/round-NN/           ← editor letter, reviewer comments, rebuttal
+    ├── 05_post-acceptance/                ← galley proofs, licence, final record
+    └── 06_post-publication/               ← promotion, archiving, citation tracking
 ```
 
 **Authoritative files for an AI session, in order of priority:**
@@ -66,6 +77,13 @@ Senior author: Viktar Taustyha. Co-author: Kanchipogu Kelvyn G Melcheizedek.
 
 - `ihrke-template/_extensions/`, `mdpi.cls`, `mdpi.bst`, `chicago2.bst`, `journalnames.tex` — MDPI engine.
 - `docs/01-Article-1-Architecture-MING_stack-Scispace/*.csv` — raw research exports; treat as read-only inputs.
+- `publishing/03_submission/v1-submitted/` and `publishing/04_peer-review/round-NN/uploaded/` once populated — these are evidence snapshots, never mutate after submission.
+
+**For the publishing pipeline:**
+
+- The full lifecycle (pre-submission → DOI → promotion) is documented in `publishing/00_publishing-workflow.md`. Every phase has explicit entry conditions and exit gates.
+- Current submission state is in `publishing/STATUS.md` (one line of truth).
+- Commit prefix `Cx-pub:` for changes inside `publishing/`, to separate them from manuscript revisions (`Cx-draft:` / `Cx-rev:`).
 
 ---
 

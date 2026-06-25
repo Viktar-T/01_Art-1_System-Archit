@@ -10,43 +10,71 @@ article_type: article
 article_status: submit
 
 authors:
-  - name: Kanchipogu Kelvyn G Melcheizedek
-    orcid: 0009-0000-7377-6027
+  - name: Viktar Taustyka
+    orcid: 0000-0002-0567-267X
     affiliations:
       - ref: 1
     corresponding: true
-    email: kelvyn6612@gmail.com
+    email: viktar.taustyka@zut.edu.pl
     roles:
       - Conceptualization
       - Methodology
+      - Software
+      - Validation
+      - Formal analysis
       - Investigation
-      - Writing - original draft
-  - name: Viktar Taustyha
-    affiliations:
-      - ref: 1
-    roles:
-      - Conceptualization
-      - Methodology
       - Resources
+      - Data curation
+      - Writing - original draft
+      - Writing - review & editing
+      - Visualization
       - Supervision
       - Project administration
+      - Funding acquisition
+  - name: Kelvyn George Melcheizedek Kanchipogu
+    orcid: 0009-0000-7377-6027
+    affiliations:
+      - ref: 1
+      - ref: 2
+    email: kanchipogukelvyn@karunya.edu.in
+    roles:
+      - Methodology
+      - Software
+      - Validation
+      - Formal analysis
+      - Investigation
+      - Resources
+      - Data curation
+      - Writing - original draft
       - Writing - review & editing
+      - Visualization
 
 affiliations:
   - id: 1
     name: "West Pomeranian University of Technology in Szczecin"
-    department: "Department of Renewable Energy Engineering, Faculty of Environmental Management and Agriculture"
+    department: "Department of Renewable Energy Sources Engineering, Faculty of Environmental Management and Agriculture"
+    address: "ul. Pawła VI 1"
+    postal-code: "71-459"
     city: "Szczecin"
     country: "Poland"
+  - id: 2
+    name: "Karunya Institute of Technology and Sciences"
+    department: "Department of Computer Science and Engineering (Artificial Intelligence)"
+    address: "Karunya Nagar"
+    postal-code: "641114"
+    city: "Coimbatore, Tamil Nadu"
+    country: "India"
 
 fundingstatement: |
-  [...]
+  This research was supported by a donation from Fundacja PGE (PGE Foundation, Poland), agreement number 2025/VII/29, awarded to the Department of Renewable Energy Sources Engineering at the West Pomeranian University of Technology in Szczecin. The donation supported the development of the educational–research platform for integrated renewable energy sources and energy storage systems described in this manuscript. The APC was funded by the Faculty of Environmental Management and Agriculture (Wydział Kształtowania Środowiska i Rolnictwa), West Pomeranian University of Technology in Szczecin.
 dataavailability: |
-  [...]
+  The platform source code, reference configurations, and canonical data model schemas supporting the architecture presented in this study are openly available on GitHub at https://github.com/Viktar-T/plat-edu-bad-data-mvp (release v1.0-mdpi-submission) and permanently archived on Zenodo at https://doi.org/10.5281/zenodo.20415136.
 conflictsofinterest: |
-  The authors declare no conflict of interest.
+  The authors declare no conflicts of interest. The sponsors had no role in the design, execution, interpretation, or writing of the study.
+authorcontributions: |
+  Conceptualization, V.T.; Methodology, V.T. and K.G.M.K.; Software, V.T. and K.G.M.K.; Validation, V.T. and K.G.M.K.; Formal Analysis, V.T. and K.G.M.K.; Investigation, V.T. and K.G.M.K.; Resources, V.T. and K.G.M.K.; Data Curation, V.T. and K.G.M.K.; Writing — Original Draft Preparation, V.T. and K.G.M.K.; Writing — Review & Editing, V.T. and K.G.M.K.; Visualization, V.T. and K.G.M.K.; Supervision, V.T.; Project Administration, V.T.; Funding Acquisition, V.T. All authors have read and agreed to the published version of the manuscript.
 acknowledgments: |
-  The authors used Claude (Anthropic) for drafting assistance, structural editing, figure source generation, and bibliography auditing. All technical claims, citations, and final wording were reviewed and verified by the authors.
+  During the preparation of this manuscript, the authors used Anthropic Claude (Sonnet 4.x and Opus 4.x) for the purposes of source-bound section drafting, structural editing, figure-source generation, and bibliography auditing. The authors have reviewed and edited the output and take full responsibility for the content of this publication.
 
 abstract: |
   The paper addresses what we term the "Impedance Mismatch" inherent in multi-energy microgrids—namely, the conflict where disparate physical domains traditionally force the use of isolated or highly rigid Supervisory Control and Data Acquisition (SCADA) data silos. We present a scalable, open-source edge-to-cloud telemetry pipeline orchestrated entirely through a custom MING+React stack (Mosquitto, InfluxDB, Node-RED, Grafana). The core architectural contribution is a category-specific Canonical Data Model (CDM) that functions as a translation layer, effectively decoupling sensor hardware from ingestion logic. Coupled with an automated Null-Pruning middleware loop and Metadata Separation, this architecture guarantees strict input purity prior to time-series persistence. To validate the system, the middleware was subjected to a high-fidelity stochastic simulation utilizing a Strict Corridor Algorithm to mimic physical inertia across 12 distinct energy vectors. Simulation-based validation confirms that the pipeline successfully maintains data integrity for valid telemetry packets, achieves high accuracy in pruning malformed data, and operates with low latency under concurrency. These findings demonstrate the architecture's feasibility as a resilient, cross-domain research environment for modern Digital Learning Factories.
@@ -90,7 +118,7 @@ This rigid, institutionalized design is actively dismantled by formalizing an ex
 
 ## Overview {#sec-overview}
 
-In this section, a structural and functional breakdown of the MING+React telemetry pipeline is provided, which serves as the core technical contribution. The design philosophy revolves around the implementation of a unified digital infrastructure that is orchestrated entirely through a `docker-compose.yml` configuration. This helped ensure every component is containerized in a portable and reproducible ecosystem that bridges the cyber and physical domains of the Learning Factory. This approach ensured the pedagogical experiments in the Learning Factory remain independent of hardware variations.
+In this section, a structural and functional breakdown of the MING+React telemetry pipeline is provided, which serves as the core technical contribution. The design philosophy revolves around the implementation of a unified digital infrastructure that is orchestrated entirely through a `docker-compose.yml` configuration. This helped ensure every component is containerized in a portable and reproducible ecosystem that bridges the cyber and physical domains of the Learning Factory. This approach ensured the pedagogical experiments in the Learning Factory remain independent of hardware variations. The full reference implementation, comprising the Docker Compose orchestration, Mosquitto, InfluxDB, Node-RED, and Grafana configurations, the canonical data model schemas, and the React frontend source, is openly available [@kanchipogu2026platedubad].
 
 The project services were mapped onto the Canonical 4-Layer CPS Architecture to maintain technical rigor [@hensler2023onpremises; @jiang2018improved]. The mapping categorizes the stack as follows:
 
@@ -252,6 +280,8 @@ Representative simulation parameters include Engine Speed ($x_0 = 3000\text{ RPM
 The twelve core physical vectors, which consist of six fast vectors and six slow vectors, were simultaneously stressed under peak high-concurrency load conditions. The simulation consisted of 10 concurrent publishers (representing the 10 data categories active in the Node-RED flow, matching the database schema measurements). Each publisher transmitted telemetry messages at a uniform 3-second interval, representing a sustained aggregate messaging rate of 3.33 messages per second. The stability test run lasted continuously for a total duration of 30 minutes, publishing a total packet count of 6,000 telemetry messages (600 packets per category). Physical assets target distinct rates, with 1 second for fast vectors and 5 seconds for slow vectors (@tbl-vectors). However, this uniform 3-second simulation rate created a sustained, high-concurrency load on the middleware, serving as a benchmark for reliability [@kaestner2018design].
 
 The telemetry dataset visualized in @fig-corridor was extracted from the InfluxDB `renewable_energy` bucket using the `capture_realtime.ps1` PowerShell script via the InfluxDB REST API. The plot demonstrates the temporal continuity modeled by the stochastic corridor algorithm. While the KIOZE specification defines physics-based models for production hardware, this validation MVP uses the stochastic corridor algorithm. This helps simulate physical inertia and test persistence under continuous, noisy conditions.
+
+**Use of generative AI.** During the preparation of this manuscript, the authors used Anthropic Claude (Sonnet 4.x and Opus 4.x) for source-bound section drafting, structural editing, figure-source generation, and bibliography auditing, under the workflow documented in the project repository. All technical claims about the KIOZE Edu-Bad architecture were independently verified against the system specification document. All citations were independently verified against the cited sources. The authors reviewed and edited every AI output and take full responsibility for the content of this publication.
 
 ![Comparison of the strict corridor algorithm against unfiltered white noise. The plot shows the normalized active power ($active\_power\_kw$) vector over a 300-second simulation window. The dataset was extracted from the InfluxDB `renewable_energy` bucket using the `capture_realtime.ps1` PowerShell script via the InfluxDB REST API. The x-axis represents Elapsed Time in seconds (s), and the y-axis represents the normalized power output (%). The legend compares the strict corridor simulation path (labeled "Temporal Continuity", representing physical inertia) against the baseline random walk with unfiltered noise (labeled "Stochastic Volatility", illustrating unconstrained fluctuations).](pics/Figure_3_Corridor_vs_Noise.pdf){#fig-corridor}
 
